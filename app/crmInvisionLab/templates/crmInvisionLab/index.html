@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Here the list of collaborators:
+{% for collaborator in collaborators %}
+    <ul>
+        <li>
+            {{collaborator.name}}
+        </li>
+    </ul>
+{% endfor %}
+</body>
+</html>

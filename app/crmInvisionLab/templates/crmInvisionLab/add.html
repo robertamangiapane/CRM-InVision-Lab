@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Add a collaborator to your database:
+<form action="/add/collaborator" method="post">{% csrf_token %}
+    <label for="name">name: </label>
+    <input id="name" type="text" name="name" value="" required>
+
+    <label for="email">email: </label>
+    <input id="email" type="text" name="email" value="">
+
+    <label for="phone">phone: </label>
+    <input id="phone" type="text" name="phone" value="">
+
+    <label for="position">where is available: </label>
+    <input id="position" type="text" name="position" value="">
+
+    <label for="availability">when is available: </label>
+    <input id="availability" type="text" name="availability" value="">
+
+    <label for="main_skills">main skills: </label>
+    <input id="main_skills" type="text" name="main_skills" value="">
+
+    <label for="secondary_skills">secondary skills: </label>
+    <input id="secondary_skills" type="text" name="secondary_skills" value="">
+
+    <input type="submit" value="OK">
+</form>
+</body>
+</html>
