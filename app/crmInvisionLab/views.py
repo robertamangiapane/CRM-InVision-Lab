@@ -4,7 +4,11 @@ from django.shortcuts import render
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
+from .models import CollaboratorSkill
 from .models import Collaborator
+from .models import Skill
+
 from .collaborator_form import AddCollaboratorForm
 
 
@@ -16,10 +20,17 @@ def index(request):
 
 def add(request):
     if request.method == "POST":
-        form = AddCollaboratorForm(request.POST)
 
-        if form.is_valid():
-            form.save()
+        collaborator_form = AddCollaboratorForm(request.POST)
+        # print("DATA", collaborator_form.data.__getitem__('name'))
+
+        if collaborator_form.is_valid():
+            collaborator = collaborator_form.save()
+
+            skill_name = collaborator_form.data.__getitem__('main_skill')
+            skill = Skill.objects.get(skill=skill_name)
+            collaborator_skill = CollaboratorSkill(main_skill="True", collaborator=collaborator, skill=skill)
+            collaborator_skill.save()
             return redirect('/')
         else:
             raise ValidationError("Collaborator must have a name")
