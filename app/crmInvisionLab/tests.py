@@ -3,7 +3,7 @@ from django.test import Client
 from django.test import TestCase
 from .models import Collaborator
 from .models import Skill
-from django import forms
+from .tests_helpers import *
 
 
 class FeatureTestInfrastructure(TestCase):
@@ -11,11 +11,8 @@ class FeatureTestInfrastructure(TestCase):
         self.client = Client()
 
     def test_homepage_displays_all_collaborators(self):
-        collaborator1 = Collaborator("1", "First collaborator", "email", "5555555555", "Rome", "Weekend")
-        collaborator2 = Collaborator("2", "Second collaborator", "email", "5555555556", "Rome", "Always")
-
-        collaborator1.save()
-        collaborator2.save()
+        collaborator1 = create_collaborator1_for_test()
+        collaborator2 = create_collaborator2_for_test()
 
         response = self.client.get('/')
         response_text = response.content.decode("utf-8")
@@ -24,8 +21,7 @@ class FeatureTestInfrastructure(TestCase):
         self.assertIn(collaborator2.name, response_text)
 
     def test_user_add_collaborator(self):
-        skill = Skill("1", "Compositing")
-        skill.save()
+        create_skill1_for_test()
         self.client.post('/add/', {'name': "Added collaborator", 'email': "email", 'phone': "5555555555",
                                    'position': "Rome", 'availability': "Weekend",
                                    'main_skill': "Compositing"})
@@ -37,8 +33,7 @@ class FeatureTestInfrastructure(TestCase):
 
 
     def test_added_collaborator_redirect_to_home(self):
-        skill = Skill("1", "Compositing")
-        skill.save()
+        create_skill1_for_test()
 
         response = self.client.post('/add/', {'name': "Added collaborator", 'email': "email", 'phone': "5555555555",
                                               'position': "Rome", 'availability': "Weekend", 'main_skill': "Compositing"})
@@ -46,8 +41,7 @@ class FeatureTestInfrastructure(TestCase):
         self.assertRedirects(response, '/')
 
     def test_user_cannot_add_collaborator_without_name(self):
-        skill = Skill("1", "Compositing")
-        skill.save()
+        create_skill1_for_test()
 
         with self.assertRaises(ValidationError):
             self.client.post('/add/', {'name': "", 'email': "email", 'phone': "5555555555",
@@ -55,8 +49,7 @@ class FeatureTestInfrastructure(TestCase):
                                        'main_skill': "Compositing"})
 
     def test_view_collaborator_page(self):
-        skill = Skill("1", "Compositing")
-        skill.save()
+        create_skill1_for_test()
 
         self.client.post('/add/', {'name': "Added collaborator", 'email': "email", 'phone': "5555555555",
                                    'position': "Rome", 'availability': "Weekend",
@@ -68,12 +61,39 @@ class FeatureTestInfrastructure(TestCase):
 
         self.assertIn("Added collaborator", response_text)
 
-
-    def test_edit_collaborators(self):
-        response = self.client.get('/edit/')
+    def test_edit_collaborator_page_shows_edit_form(self):
+        collaborator = create_collaborator1_for_test()
+        response = self.client.get('/edit/' + str(collaborator.id))
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b"Edit a selected collaborator")
 
-    # def test_user_input_wrong_date_format(self):
-    # string or wrong date
+    def test_edit_collaborator_redirect_edited_collaborator_page(self):
+        create_collaborator1_for_test()
+        create_skill1_for_test()
+        create_skill2_for_test()
+
+        collaborator_edited = self.client.post('/edit/1', {'name': "Collaborator edited", 'email': "email", 'phone': "5555555555",
+                                   'position': "Rome", 'availability': "Weekend",
+                                   'main_skill': "Compositing"})
+
+        response_text = collaborator_edited.content.decode("utf-8")
+
+        self.assertIn("Collaborator edited", response_text)
+
+
+        # collaborator = Collaborator("1", "First collaborator", "email", "5555555555", "Rome", "Weekend")
+        # collaborator.save()
+        # skill1 = Skill("1", "3D")
+        # skill1.save()
+        # skill2 = Skill("1", "3D")
+        # skill2.save()
+        #
+        # response = self.client.get('/edit/' + str(collaborator.id))
+        # self.client.post('/edit/', {'name': "Added collaborator", 'email': "email", 'phone': "5555555555",
+        #                            'position': "Rome", 'availability': "Weekend",
+        #                            'main_skill': "Compositing"})
+
+        # self.assertEqual(response.status_code, 200)
+        # self.assertEqual(response.content, b"Edit a selected collaborator")
+

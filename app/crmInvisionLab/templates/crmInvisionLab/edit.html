@@ -5,6 +5,27 @@
     <title>Title</title>
 </head>
 <body>
+Edit a collaborator in your database:
+<form action="/add/collaborator" method="post">{% csrf_token %}
+    <label for="name">name: </label>
+    <input id="name" type="text" name="name" value="" required>
 
+    <label for="email">email: </label>
+    <input id="email" type="text" name="email" value="">
+
+    <label for="phone">phone: </label>
+    <input id="phone" type="text" name="phone" value="">
+
+    <label for="position">where is available: </label>
+    <input id="position" type="text" name="position" value="">
+
+    <label for="availability">when is available: </label>
+    <input id="availability" type="text" name="availability" value="">
+
+    <label for="main_skill">main skills: </label>
+    <input id="main_skill" type="text" name="main_skill" value="">
+
+    <input type="submit" value="OK">
+</form>
 </body>
 </html>

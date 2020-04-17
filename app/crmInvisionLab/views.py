@@ -22,7 +22,6 @@ def add(request):
     if request.method == "POST":
 
         collaborator_form = AddCollaboratorForm(request.POST)
-        # print("DATA", collaborator_form.data.__getitem__('name'))
 
         if collaborator_form.is_valid():
             collaborator = collaborator_form.save()
@@ -45,5 +44,13 @@ def view(request, id_collaborator):
     return render(request, 'crmInvisionLab/collaborator.html', context)
 
 
-def edit(request):
-    return HttpResponse("Edit a selected collaborator")
+def edit(request, id_collaborator):
+    if request.method == "GET":
+        return HttpResponse("Edit a selected collaborator")
+    elif request.method == "POST":
+        # collaborator_form = AddCollaboratorForm(request.POST)
+        # if collaborator_form.is_valid():
+        collaborator = Collaborator.objects.get(id=id_collaborator)
+        collaborator.name = request.POST.get('name')
+        return redirect('/view/' + str(id_collaborator))
+
