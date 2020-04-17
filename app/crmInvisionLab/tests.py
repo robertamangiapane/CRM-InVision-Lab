@@ -61,39 +61,14 @@ class FeatureTestInfrastructure(TestCase):
 
         self.assertIn("Added collaborator", response_text)
 
-    def test_edit_collaborator_page_shows_edit_form(self):
-        collaborator = create_collaborator1_for_test()
-        response = self.client.get('/edit/' + str(collaborator.id))
-
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.content, b"Edit a selected collaborator")
-
     def test_edit_collaborator_redirect_edited_collaborator_page(self):
-        create_collaborator1_for_test()
+        collaborator = create_collaborator1_for_test()
         create_skill1_for_test()
         create_skill2_for_test()
 
-        collaborator_edited = self.client.post('/edit/1', {'name': "Collaborator edited", 'email': "email", 'phone': "5555555555",
+        response = self.client.post('/edit/' + str(collaborator.id), {'name': "Collaborator edited", 'email': "email", 'phone': "5555555555",
                                    'position': "Rome", 'availability': "Weekend",
                                    'main_skill': "Compositing"})
 
-        response_text = collaborator_edited.content.decode("utf-8")
-
-        self.assertIn("Collaborator edited", response_text)
-
-
-        # collaborator = Collaborator("1", "First collaborator", "email", "5555555555", "Rome", "Weekend")
-        # collaborator.save()
-        # skill1 = Skill("1", "3D")
-        # skill1.save()
-        # skill2 = Skill("1", "3D")
-        # skill2.save()
-        #
-        # response = self.client.get('/edit/' + str(collaborator.id))
-        # self.client.post('/edit/', {'name': "Added collaborator", 'email': "email", 'phone': "5555555555",
-        #                            'position': "Rome", 'availability': "Weekend",
-        #                            'main_skill': "Compositing"})
-
-        # self.assertEqual(response.status_code, 200)
-        # self.assertEqual(response.content, b"Edit a selected collaborator")
+        self.assertRedirects(response, '/collaborator/' + str(collaborator.id))
 

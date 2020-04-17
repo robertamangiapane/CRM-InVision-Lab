@@ -6,5 +6,5 @@ urlpatterns = [
     path('add/', views.add, name='add'),
     path('add/collaborator', views.add, name="add_collaborator"),
     path('collaborator/<str:id_collaborator>', views.view, name='collaborator'),
-    path('edit/<str:id_collaborator>', views.edit, name='edit')
+    path('edit/<str:id_collaborator>', views.edit, name='edit_collaborator')
 ]
