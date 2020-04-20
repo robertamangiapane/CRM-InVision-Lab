@@ -6,7 +6,7 @@
 </head>
 <body>
 Edit a collaborator in your database:
-<form action="/edit/{{collaborator_id}}" method="post">{% csrf_token %}
+<form action="/edit/{{id_collaborator}}" method="post">{% csrf_token %}
     {{collaborator_form.as_p}}
 
     <p><label for="main_skill">Main skills: </label>

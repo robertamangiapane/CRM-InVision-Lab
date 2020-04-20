@@ -74,7 +74,7 @@ def edit(request, id_collaborator):
     else:
         collaborator_form = AddCollaboratorForm(instance=collaborator)
 
-    return render(request, 'crmInvisionLab/edit.html', {'collaborator_form': collaborator_form})
+    return render(request, 'crmInvisionLab/edit.html', {'collaborator_form': collaborator_form, 'id_collaborator': id_collaborator})
 
 
 
