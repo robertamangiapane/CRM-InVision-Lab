@@ -27,7 +27,7 @@ class Skill(Model):
 
 class CollaboratorSkill(Model):
     # SKILLS_LIST = ('Compositing', '3D', 'Matte Painter')
-    object = Manager()
+    objects = Manager()
     main_skill = CharField(max_length=200)
     # secondary_skill = CharField(max_length=200)
     collaborator = ForeignKey(Collaborator, on_delete=CASCADE)

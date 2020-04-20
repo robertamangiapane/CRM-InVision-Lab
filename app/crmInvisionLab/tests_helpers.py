@@ -1,23 +1,44 @@
-from .models import Collaborator
-from .models import Skill
+from .models import Collaborator, Skill, CollaboratorSkill
 
 
-def create_collaborator1_for_test():
-    collaborator = Collaborator("1", "First collaborator", "email", "5555555555", "Rome", "Weekend")
+def create_collaborator1_3D_for_test():
+    collaborator = Collaborator(name="First collaborator",
+                                email="email",
+                                phone="5555555555",
+                                position="Rome",
+                                availability="Weekend")
     collaborator.save()
+    skill = Skill(skill="3D")
+    skill.save()
+    collaborator_skill_relation = CollaboratorSkill(main_skill="True",
+                                                    collaborator=collaborator,
+                                                    skill=skill)
+    collaborator_skill_relation.save()
+
     return collaborator
 
-def create_collaborator2_for_test():
-    collaborator = Collaborator("2", "Second collaborator", "email", "5555555556", "Rome", "Always")
+def create_collaborator2_compositing_for_test():
+    collaborator = Collaborator(name="Second collaborator",
+                                email="email",
+                                phone="5555555556",
+                                position="Rome",
+                                availability="Always")
     collaborator.save()
+    skill = Skill(skill="Compositing")
+    skill.save()
+    collaborator_skill_relation = CollaboratorSkill(main_skill="True",
+                                                    collaborator=collaborator,
+                                                    skill=skill)
+    collaborator_skill_relation.save()
+
     return collaborator
 
-def create_skill1_for_test():
-    skill = Skill("1", "Compositing")
+def create_skill_compositing_for_test():
+    skill = Skill(skill="Compositing")
     skill.save()
     return skill
 
-def create_skill2_for_test():
-    skill = Skill("2", "3D")
+def create_skill_3D_for_test():
+    skill = Skill(skill="3D")
     skill.save()
     return skill
