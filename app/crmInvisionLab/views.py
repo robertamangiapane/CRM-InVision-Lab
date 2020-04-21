@@ -10,14 +10,6 @@ from .collaborator_form import AddCollaboratorForm
 
 def index(request):
     collaborators = Collaborator.objects.all()
-    # skills = []
-    # for collaborator in collaborators:
-    #     try:
-    #         skill = CollaboratorSkill.objects.get(collaborator=collaborator.id).skill.skill
-    #     except Exception:
-    #         skill = ""
-    #     skills.append(skill)
-
     context = {'collaborators': collaborators}
 
     return render(request, 'crmInvisionLab/index.html', context)

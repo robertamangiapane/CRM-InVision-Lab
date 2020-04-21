@@ -5,6 +5,11 @@
     <title>Title</title>
 </head>
 <body>
+<p>
+<form action="/" method="get">
+    <button>Home</button>
+</form>
+</p>
 Add a collaborator to your database:
 <form action="/add/collaborator" method="post">{% csrf_token %}
     {{collaborator_form.as_p}}

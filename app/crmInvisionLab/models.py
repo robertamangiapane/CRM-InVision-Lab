@@ -1,8 +1,4 @@
-
-# Create your models here.
 from django.db.models import *
-
-# Create your models here.
 
 
 class Skill(Model):
@@ -26,5 +22,3 @@ class Collaborator(Model):
     # showreel = CharField(max_length=200)
     # worked_on = CharField(max_length=200)
     # connection = CharField(max_length=200)
-
-
