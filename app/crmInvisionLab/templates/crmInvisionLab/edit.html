@@ -5,6 +5,14 @@
     <title>Title</title>
 </head>
 <body>
+<p>
+<form action="/" method="get">
+    <button>Home</button>
+</form>
+<form action="/collaborator/{{ id_collaborator }}" method="get">
+    <button>Back</button>
+</form>
+</p>
 Edit a collaborator in your database:
 <form action="/edit/{{id_collaborator}}" method="post">{% csrf_token %}
     {{collaborator_form.as_p}}

@@ -20,7 +20,7 @@ Here the list of collaborators:
 {% for collaborator in collaborators %}
     <tr>
         <td>
-            {{collaborator.name}}
+            <a href="collaborator/{{ collaborator.id }}">{{collaborator.name}}</a>
         </td>
         <td>
             {% for skill in collaborator.main_skills.all.values %}
