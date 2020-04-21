@@ -6,12 +6,23 @@
 </head>
 <body>
 Here the list of collaborators:
+<table border="1" width="600">
+    <tr>
+        <td>Collaborator:</td>
+        <br>
+        <td>Skill:</td>
+    </tr>
 {% for collaborator in collaborators %}
-    <ul>
-        <li>
+    <tr>
+        <td>
             {{collaborator.name}}
-        </li>
-    </ul>
+        </td>
+        <td>
+            {% for skill in collaborator.main_skills.all.values %}
+                {{skill.skill}};
+            {% endfor %}
+        </td>
+    </tr>
 {% endfor %}
 </body>
 </html>

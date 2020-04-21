@@ -9,6 +9,8 @@ Collaborator:
 {{collaborator.name}}
 <br>
 Skill:
-{{skill.skill}}
+{% for skill in collaborator.main_skills.all.values %}
+    {{skill.skill}};
+{% endfor %}
 </body>
 </html>
