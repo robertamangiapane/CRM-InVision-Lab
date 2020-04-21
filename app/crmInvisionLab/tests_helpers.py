@@ -2,7 +2,7 @@ from .models import Collaborator, Skill
 
 
 def create_collaborator1_3D_for_test():
-    skill = Skill(skill="3D")
+    skill = Skill(name="3D")
     skill.save()
     collaborator = Collaborator(name="First collaborator",
                                 email="email",
@@ -17,7 +17,7 @@ def create_collaborator1_3D_for_test():
     return collaborator
 
 def create_collaborator2_compositing_for_test():
-    skill = Skill(skill="Compositing")
+    skill = Skill(name="Compositing")
     skill.save()
     collaborator = Collaborator(name="Second collaborator",
                                 email="email",
@@ -32,11 +32,11 @@ def create_collaborator2_compositing_for_test():
     return collaborator
 
 def create_skill_compositing_for_test():
-    skill = Skill(skill="Compositing")
+    skill = Skill(name="Compositing")
     skill.save()
     return skill
 
 def create_skill_3D_for_test():
-    skill = Skill(skill="3D")
+    skill = Skill(name="3D")
     skill.save()
     return skill

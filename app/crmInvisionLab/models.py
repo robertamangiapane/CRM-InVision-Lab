@@ -8,7 +8,10 @@ from django.db.models import *
 class Skill(Model):
     # SKILLS_LIST = TextChoices('Compositing', '3D')
     objects = Manager()
-    skill = CharField(max_length=200)
+    name = CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
 
 
 class Collaborator(Model):

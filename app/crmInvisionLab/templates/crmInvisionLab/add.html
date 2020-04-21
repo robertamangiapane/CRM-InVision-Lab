@@ -8,10 +8,6 @@
 Add a collaborator to your database:
 <form action="/add/collaborator" method="post">{% csrf_token %}
     {{collaborator_form.as_p}}
-
-    <p><label for="main_skill">Main skills: </label>
-        <input id="main_skill" type="text" name="main_skill" value="">
-    </p>
     <p><input type="submit" value="OK"></p>
 </form>
 </body>

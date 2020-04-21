@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
-from .collaborator_skills_helpers import relation_skill_table_helpers
 from .models import Collaborator
 
 from .collaborator_form import AddCollaboratorForm
@@ -32,11 +31,9 @@ def add(request):
 
         if collaborator_form.is_valid():
             collaborator = collaborator_form.save()
-            relation_skill_table_helpers(collaborator, collaborator_form.data.__getitem__('main_skill'))
-
             return redirect('/collaborator/' + str(collaborator.id))
         else:
-            raise ValidationError("Collaborator must have a name")
+            raise ValidationError("Form is not valid")
     else:
         collaborator_form = AddCollaboratorForm(instance=collaborator)
 
@@ -58,8 +55,7 @@ def edit(request, id_collaborator):
         collaborator_form = AddCollaboratorForm(request.POST, instance=collaborator)
 
         if collaborator_form.is_valid():
-            collaborator = collaborator_form.save()
-            relation_skill_table_helpers(collaborator, collaborator_form.data.__getitem__('main_skill'))
+            collaborator_form.save()
 
             return redirect('/collaborator/' + str(id_collaborator))
         else:
