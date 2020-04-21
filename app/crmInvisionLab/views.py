@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
-from .models import Collaborator
+from .models import Collaborator, Skill
 
 from .collaborator_form import AddCollaboratorForm
 
@@ -57,3 +57,35 @@ def edit(request, id_collaborator):
 
     return render(request, 'crmInvisionLab/edit.html', {'collaborator_form': collaborator_form,
                                                         'id_collaborator': id_collaborator})
+
+
+def skill_index(request):
+    skills = Skill.objects.order_by("name")
+
+    return render(request, 'crmInvisionLab/skills.html', {'skills': skills})
+
+
+def skill_add(request):
+    skill = Skill()
+    if request.method == "POST":
+        skill_name = request.POST["skill"]
+        print(skill_name)
+
+        skill = Skill(name=skill_name)
+        skill.save()
+        print(skill.name)
+
+        return redirect('/skills')
+    else:
+        return render(request, 'crmInvisionLab/skills.html', {'skill': skill})
+
+
+def skill_delete(request, id_skill):
+    skill = Skill.objects.get(id=id_skill)
+
+    if request.method == "POST":
+
+        skill.delete()
+        return redirect('/skills')
+    else:
+        return render(request, 'crmInvisionLab/skills.html', {'skill': skill})

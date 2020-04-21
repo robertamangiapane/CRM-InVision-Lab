@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+<form action="/" method="get">
+    <button>Home</button>
+</form>
+</p>
+<form action="/skills/add" method="post">{% csrf_token %}
+    <input type="text" name="skill" placeholder="Add a skill">
+    <input type="submit" value="Add">
+</form>
+<table border="1" width="600">
+<tr>
+<td>Skill:</td>
+</tr>
+<br>
+{% for skill in skills %}
+<tr>
+<td>
+<p>{{ skill.name }}</p>
+</td>
+    <td>
+<form action="/skills/delete/{{skill.id}}" method="post">{% csrf_token %}
+    <button>Delete Skill</button>
+</form>
+    </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>

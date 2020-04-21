@@ -16,6 +16,7 @@ def create_collaborator1_3D_for_test():
 
     return collaborator
 
+
 def create_collaborator2_compositing_for_test():
     skill = Skill(name="Compositing")
     skill.save()
@@ -31,10 +32,12 @@ def create_collaborator2_compositing_for_test():
 
     return collaborator
 
+
 def create_skill_compositing_for_test():
     skill = Skill(name="Compositing")
     skill.save()
     return skill
+
 
 def create_skill_3D_for_test():
     skill = Skill(name="3D")
