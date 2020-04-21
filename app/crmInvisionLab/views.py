@@ -9,7 +9,7 @@ from .collaborator_form import AddCollaboratorForm
 
 
 def index(request):
-    collaborators = Collaborator.objects.all()
+    collaborators = Collaborator.objects.order_by("name")
     context = {'collaborators': collaborators}
 
     return render(request, 'crmInvisionLab/index.html', context)
