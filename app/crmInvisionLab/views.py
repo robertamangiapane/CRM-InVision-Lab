@@ -83,6 +83,10 @@ def skill_add(request):
         return render(request, 'crmInvisionLab/skills.html', {'skill': skill})
 
 
+# def skill_edit(request, id_skill):
+#     pass
+
+
 def skill_delete(request, id_skill):
     skill = Skill.objects.get(id=id_skill)
 
