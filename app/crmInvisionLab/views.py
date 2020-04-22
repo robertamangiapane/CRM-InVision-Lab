@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from .models import Collaborator, Skill
 from .collaborator_form import AddCollaboratorForm
+from .filtering_helpers import *
 
 
 def index(request):
@@ -13,8 +14,11 @@ def index(request):
 
 def collaborators_index(request):
     collaborators = Collaborator.objects.order_by("name")
+    if request.method == "POST":
+        collaborators = collaborator_filter(request.POST)
+        # collaborators = Collaborator.objects.filter(main_skills__name__contains="3D")
+        # print(collaborators)
     context = {'collaborators': collaborators}
-
     return render(request, 'crmInvisionLab/collaborators_index.html', context)
 
 
@@ -93,13 +97,11 @@ def skill_add(request):
 
 def skill_edit(request, id_skill):
     skill = Skill.objects.get(id=id_skill)
-    print(skill.name)
 
     if request.method == "POST":
         new_name = request.POST[skill.name]
         skill.name = new_name
         skill.save()
-        print(skill.name)
 
         return redirect('/skills')
     else:

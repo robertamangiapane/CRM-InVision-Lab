@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.test import Client
 from django.test import TestCase
-from .tests_helpers import *
+from .helpers import *
 
 
 class FeatureTestInfrastructure(TestCase):
@@ -98,6 +98,22 @@ class FeatureTestInfrastructure(TestCase):
         response_text = response.content.decode("utf-8")
 
         self.assertNotIn("First collaborator", response_text)
+    #
+    # def test_user_can_search_collaborator_with_a_filter(self):
+    #     skill = create_collaborator1_3D_for_test()
+    #     create_collaborator2_compositing_for_test()
+    #     response = self.client.post('/collaborators', {
+    #         'name': "",
+    #         'email': "",
+    #         'phone': "",
+    #         'position': "",
+    #         'availability': "",
+    #         'main_skills': "3D"})
+    #
+    #     response_text = response.content.decode("utf-8")
+    #
+    #     self.assertIn("First collaborator", response_text)
+    #     self.assertNotIn("Second collaborator", response_text)
 
     def test_display_skills_homepage(self):
         create_skill_3D_for_test()

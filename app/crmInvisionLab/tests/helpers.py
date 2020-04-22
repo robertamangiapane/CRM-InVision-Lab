@@ -1,4 +1,4 @@
-from .models import Collaborator, Skill
+from ..models import Collaborator, Skill
 
 
 def create_collaborator1_3D_for_test():
