@@ -72,7 +72,7 @@ class FeatureTestInfrastructure(TestCase):
                               'availability': "Weekend",
                               'main_skills': "Compositing"})
 
-    def test_edit_collaborator_skill_relationship_table(self):
+    def test_user_can_edit_a_collaborator(self):
         collaborator = create_collaborator1_3D_for_test()
         skill2 = Skill.objects.get(name="3D")
         skill = create_skill_compositing_for_test()
@@ -90,6 +90,14 @@ class FeatureTestInfrastructure(TestCase):
         response_text = response.content.decode("utf-8")
         self.assertIn("Compositing", response_text)
         self.assertIn("3D", response_text)
+
+    def test_user_can_delete_a_collaborator(self):
+        collaborator = create_collaborator1_3D_for_test()
+        self.client.post('/collaborators/delete/' + str(collaborator.id))
+        response = self.client.get('/collaborators')
+        response_text = response.content.decode("utf-8")
+
+        self.assertNotIn("First collaborator", response_text)
 
     def test_display_skills_homepage(self):
         create_skill_3D_for_test()
@@ -125,7 +133,6 @@ class FeatureTestInfrastructure(TestCase):
 
         self.assertNotIn("Wrong", response_text)
         self.assertIn("Right", response_text)
-
 
 
 

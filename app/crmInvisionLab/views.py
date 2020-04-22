@@ -62,6 +62,17 @@ def collaborator_edit(request, id_collaborator):
                                                         'id_collaborator': id_collaborator})
 
 
+def collaborator_delete(request, id_collaborator):
+    collaborator = Collaborator.objects.get(id=id_collaborator)
+
+    if request.method == "POST":
+        collaborator.delete()
+        return redirect('/collaborators')
+
+    else:
+        return render(request, 'crmInvisionLab/collaborators_index.html')
+
+
 def skill_index(request):
     skills = Skill.objects.order_by("name")
 

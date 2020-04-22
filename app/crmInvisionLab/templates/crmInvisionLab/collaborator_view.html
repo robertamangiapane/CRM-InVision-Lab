@@ -12,9 +12,14 @@
 <a href="/collaborators">
     <button>My collaborators</button>
 </a>
+<p>
 <a href="/collaborators/edit/{{ collaborator.id }}">
     <button>Edit collaborator</button>
 </a>
+<form action="/collaborators/delete/{{ collaborator.id }}" method="post">{% csrf_token %}
+    <button>Delete collaborator</button>
+</form>
+</p>
 </p>
 Collaborator:
 {{collaborator.name}}
