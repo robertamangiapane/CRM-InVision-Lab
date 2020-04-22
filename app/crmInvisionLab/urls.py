@@ -9,6 +9,6 @@ urlpatterns = [
     path('collaborators/edit/<str:id_collaborator>', views.collaborator_edit, name='collaborator_edit'),
     path('skills', views.skill_index, name="skills"),
     path('skills/add', views.skill_add, name="skills_add"),
-    # path('skills/edit', views.skill_edit, name="skills_edit"),
+    path('skills/edit/<str:id_skill>', views.skill_edit, name="skills_edit"),
     path('skills/delete/<str:id_skill>', views.skill_delete, name="skill_id_delete")
 ]

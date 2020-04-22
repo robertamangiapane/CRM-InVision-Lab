@@ -43,3 +43,9 @@ def create_skill_3D_for_test():
     skill = Skill(name="3D")
     skill.save()
     return skill
+
+
+def create_wrong_skill_for_test():
+    skill = Skill(name="Wrong")
+    skill.save()
+    return skill

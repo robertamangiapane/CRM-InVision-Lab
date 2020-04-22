@@ -72,19 +72,27 @@ def skill_add(request):
     skill = Skill()
     if request.method == "POST":
         skill_name = request.POST["skill"]
-        print(skill_name)
-
         skill = Skill(name=skill_name)
         skill.save()
-        print(skill.name)
 
         return redirect('/skills')
     else:
         return render(request, 'crmInvisionLab/skills.html', {'skill': skill})
 
 
-# def skill_edit(request, id_skill):
-#     pass
+def skill_edit(request, id_skill):
+    skill = Skill.objects.get(id=id_skill)
+    print(skill.name)
+
+    if request.method == "POST":
+        new_name = request.POST[skill.name]
+        skill.name = new_name
+        skill.save()
+        print(skill.name)
+
+        return redirect('/skills')
+    else:
+        return render(request, 'crmInvisionLab/skills.html', {'skill': skill})
 
 
 def skill_delete(request, id_skill):

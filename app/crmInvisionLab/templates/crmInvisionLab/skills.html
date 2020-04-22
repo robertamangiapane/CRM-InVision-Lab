@@ -25,15 +25,18 @@
 <br>
 {% for skill in skills %}
 <tr>
-<td>
-<p>{{ skill.name }}</p>
-</td>
     <td>
-<form action="/skills/delete/{{skill.id}}" method="post">{% csrf_token %}
-    <button>Delete Skill</button>
-</form>
+        <form action="/skills/edit/{{skill.id}}" method="post">{% csrf_token %}
+            <input type="text" name="{{ skill.name }}" value="{{ skill.name }}">
+            <input type="submit" value="Edit Skill">
+        </form>
     </td>
-    </tr>
+    <td>
+        <form action="/skills/delete/{{skill.id}}" method="post">{% csrf_token %}
+            <button>Delete Skill</button>
+        </form>
+    </td>
+</tr>
 {% endfor %}
 </table>
 </body>
