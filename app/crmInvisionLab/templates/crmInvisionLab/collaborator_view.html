@@ -9,7 +9,10 @@
 <form action="/" method="get">
     <button>Home</button>
 </form>
-<form action="/edit/{{ collaborator.id }}" method="get">
+<form action="/collaborators" method="get">
+    <button>My collaborators</button>
+</form>
+<form action="/collaborators/edit/{{ collaborator.id }}" method="get">
     <button>Edit collaborator</button>
 </form>
 </p>

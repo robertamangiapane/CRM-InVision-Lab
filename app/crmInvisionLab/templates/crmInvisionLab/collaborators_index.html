@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+<form action="/" method="get">
+    <button>Home</button>
+</form>
+<form action="/skills" method="get">
+    <button>Skills</button>
+</form>
+<form action="/collaborators/add/collaborator" method="get">
+    <button>Add collaborator</button>
+</form>
+
+</p>
+Here the list of collaborators:
+<table border="1" width="600">
+    <tr>
+        <td>Collaborator:</td>
+        <br>
+        <td>Skill:</td>
+    </tr>
+{% for collaborator in collaborators %}
+    <tr>
+        <td>
+            <a href="collaborators/view/{{ collaborator.id }}">{{collaborator.name}}</a>
+        </td>
+        <td>
+            {% for skill in collaborator.main_skills.all.values %}
+                {{skill.name}};
+            {% endfor %}
+        </td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>

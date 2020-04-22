@@ -9,12 +9,12 @@
 <form action="/" method="get">
     <button>Home</button>
 </form>
-<form action="/collaborator/{{ id_collaborator }}" method="get">
+<form action="/collaborators/view/{{ id_collaborator }}" method="get">
     <button>Back</button>
 </form>
 </p>
 Edit a collaborator in your database:
-<form action="/edit/{{id_collaborator}}" method="post">{% csrf_token %}
+<form action="/collaborators/edit/{{id_collaborator}}" method="post">{% csrf_token %}
     {{collaborator_form.as_p}}
 
     <p><input type="submit" value="OK"></p>

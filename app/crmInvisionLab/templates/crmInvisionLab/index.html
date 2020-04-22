@@ -6,32 +6,13 @@
 </head>
 <body>
 <p>
-<form action="/add/collaborator" method="get">
-    <button>Add collaborator</button>
+<form action="/collaborators" method="get">
+    <button>My collaborators</button>
 </form>
-<form action="/skills/" method="get">
+<form action="/skills" method="get">
     <button>Skills</button>
 </form>
+
 </p>
-Here the list of collaborators:
-<table border="1" width="600">
-    <tr>
-        <td>Collaborator:</td>
-        <br>
-        <td>Skill:</td>
-    </tr>
-{% for collaborator in collaborators %}
-    <tr>
-        <td>
-            <a href="collaborator/{{ collaborator.id }}">{{collaborator.name}}</a>
-        </td>
-        <td>
-            {% for skill in collaborator.main_skills.all.values %}
-                {{skill.name}};
-            {% endfor %}
-        </td>
-    </tr>
-{% endfor %}
-</table>
 </body>
 </html>

@@ -11,7 +11,7 @@
 </form>
 </p>
 Add a collaborator to your database:
-<form action="/add/collaborator" method="post">{% csrf_token %}
+<form action="/collaborators/add/collaborator" method="post">{% csrf_token %}
     {{collaborator_form.as_p}}
     <p><input type="submit" value="OK"></p>
 </form>

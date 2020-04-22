@@ -4,18 +4,21 @@ from django.shortcuts import render
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from .models import Collaborator, Skill
-
 from .collaborator_form import AddCollaboratorForm
 
 
 def index(request):
+    return render(request, 'crmInvisionLab/index.html')
+
+
+def collaborators_index(request):
     collaborators = Collaborator.objects.order_by("name")
     context = {'collaborators': collaborators}
 
-    return render(request, 'crmInvisionLab/index.html', context)
+    return render(request, 'crmInvisionLab/collaborators_index.html', context)
 
 
-def add(request):
+def collaborator_add(request):
     collaborator = Collaborator()
 
     if request.method == "POST":
@@ -23,24 +26,24 @@ def add(request):
 
         if collaborator_form.is_valid():
             collaborator = collaborator_form.save()
-            return redirect('/collaborator/' + str(collaborator.id))
+            return redirect('/collaborators/view/' + str(collaborator.id))
         else:
             raise ValidationError("Form is not valid")
     else:
         collaborator_form = AddCollaboratorForm(instance=collaborator)
 
-    return render(request, 'crmInvisionLab/add.html', {'collaborator_form': collaborator_form})
+    return render(request, 'crmInvisionLab/collaborator_add.html', {'collaborator_form': collaborator_form})
 
 
-def view(request, id_collaborator):
+def collaborator_view(request, id_collaborator):
     collaborator = Collaborator.objects.get(id=id_collaborator)
     skill = collaborator.main_skills
     context = {'collaborator': collaborator, 'skill': skill}
 
-    return render(request, 'crmInvisionLab/collaborator.html', context)
+    return render(request, 'crmInvisionLab/collaborator_view.html', context)
 
 
-def edit(request, id_collaborator):
+def collaborator_edit(request, id_collaborator):
     collaborator = Collaborator.objects.get(id=id_collaborator)
 
     if request.method == "POST":
@@ -49,13 +52,13 @@ def edit(request, id_collaborator):
         if collaborator_form.is_valid():
             collaborator_form.save()
 
-            return redirect('/collaborator/' + str(id_collaborator))
+            return redirect('/collaborators/view/' + str(id_collaborator))
         else:
             raise ValidationError("Collaborator must have a name")
     else:
         collaborator_form = AddCollaboratorForm(instance=collaborator)
 
-    return render(request, 'crmInvisionLab/edit.html', {'collaborator_form': collaborator_form,
+    return render(request, 'crmInvisionLab/collaborator_edit.html', {'collaborator_form': collaborator_form,
                                                         'id_collaborator': id_collaborator})
 
 
