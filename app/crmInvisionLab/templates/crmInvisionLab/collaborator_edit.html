@@ -6,12 +6,12 @@
 </head>
 <body>
 <p>
-<form action="/" method="get">
+<a href="/">
     <button>Home</button>
-</form>
-<form action="/collaborators/view/{{ id_collaborator }}" method="get">
+</a>
+<a href="/collaborators/view/{{ id_collaborator }}">
     <button>Back</button>
-</form>
+</a>
 </p>
 Edit a collaborator in your database:
 <form action="/collaborators/edit/{{id_collaborator}}" method="post">{% csrf_token %}

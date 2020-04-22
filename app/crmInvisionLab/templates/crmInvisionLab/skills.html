@@ -6,29 +6,31 @@
 </head>
 <body>
 <p>
-<form action="/" method="get">
+<a href="/">
     <button>Home</button>
-</form>
-<form action="/collaborators" method="get">
+</a>
+<a href="/collaborators">
     <button>My collaborators</button>
-</form>
+</a>
 
 </p>
 <form action="/skills/add" method="post">{% csrf_token %}
     <input type="text" name="skill" placeholder="Add a skill">
     <input type="submit" value="Add">
 </form>
-<table border="1" width="600">
+<table border="0" width="600">
 <tr>
 <td>Skill:</td>
 </tr>
 <br>
 {% for skill in skills %}
 <tr>
-    <td>
+    <td width="400">
         <form action="/skills/edit/{{skill.id}}" method="post">{% csrf_token %}
-            <input type="text" name="{{ skill.name }}" value="{{ skill.name }}">
-            <input type="submit" value="Edit Skill">
+            <input type="text" name="{{ skill.name }}" value="{{ skill.name }}" disabled>
+            <input type="text" name="{{ skill.name }}" placeholder="New name">
+
+            <input type="submit" value="Rename Skill">
         </form>
     </td>
     <td>

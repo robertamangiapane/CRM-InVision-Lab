@@ -6,15 +6,15 @@
 </head>
 <body>
 <p>
-<form action="/" method="get">
+<a href="/">
     <button>Home</button>
-</form>
-<form action="/collaborators" method="get">
+</a>
+<a href="/collaborators">
     <button>My collaborators</button>
-</form>
-<form action="/collaborators/edit/{{ collaborator.id }}" method="get">
+</a>
+<a href="/collaborators/edit/{{ collaborator.id }}">
     <button>Edit collaborator</button>
-</form>
+</a>
 </p>
 Collaborator:
 {{collaborator.name}}
