@@ -16,14 +16,9 @@
     <button>Skills</button>
 </a></p>
 Search a collaborator:
-<form action="/collaborators" method="post">{% csrf_token %}
-    <input type="text" name="name" placeholder="Name">
-    <input type="text" name="email" placeholder="Email">
-    <input type="text" name="phone" placeholder="Phone">
-    <input type="text" name="position" placeholder="Position">
-    <input type="text" name="availability" placeholder="Availability">
-    <input type="text" name="main_skills" placeholder="Main Skills">
-    <input type="submit" value="OK">
+<form action="/collaborators" method="get">{% csrf_token %}
+    {{ search_form }}
+    <input type="submit" name="search" value="OK">
 </form>
 <br>
 Here the list of collaborators:

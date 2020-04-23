@@ -102,13 +102,14 @@ class FeatureTestInfrastructure(TestCase):
     def test_user_can_search_collaborator_with_a_filter(self):
         create_collaborator1_3D_for_test()
         create_collaborator2_compositing_for_test()
-        response = self.client.post('/collaborators', {
+        response = self.client.get('/collaborators', {
             'name': "",
             'email': "",
             'phone': "",
             'position': "Rome",
             'availability': "",
-            'main_skills': "3D"})
+            'main_skills': "3D",
+            'search': "OK"})
 
         response_text = response.content.decode("utf-8")
 

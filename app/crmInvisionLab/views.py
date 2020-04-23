@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from .models import Collaborator, Skill
-from .collaborator_form import AddCollaboratorForm
+from .collaborator_form import AddCollaboratorForm, SearchCollaboratorForm
 from .filtering_helpers import *
 
 
@@ -14,11 +14,14 @@ def index(request):
 
 def collaborators_index(request):
     collaborators = Collaborator.objects.order_by("name")
-    if request.method == "POST":
-        sort_params = collaborator_filter(request.POST)
+    search_form = SearchCollaboratorForm(request.GET)
+
+    if search_form.is_valid():
+
+        sort_params = collaborator_filter(search_form.cleaned_data)
         collaborators = Collaborator.objects.filter(**sort_params)
 
-    context = {'collaborators': collaborators}
+    context = {'collaborators': collaborators, 'search_form': search_form}
     return render(request, 'crmInvisionLab/collaborators_index.html', context)
 
 
