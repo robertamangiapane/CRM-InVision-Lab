@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, Form
 from .models import Collaborator
 
 
@@ -12,3 +12,5 @@ class AddCollaboratorForm(ModelForm):
                   'position': 'Position',
                   'availability': "When is available",
                   'main_skills': "Main skills"}
+
+# class SearchCollaboratorForm(Form):

@@ -15,9 +15,9 @@ def index(request):
 def collaborators_index(request):
     collaborators = Collaborator.objects.order_by("name")
     if request.method == "POST":
-        collaborators = collaborator_filter(request.POST)
-        # collaborators = Collaborator.objects.filter(main_skills__name__contains="3D")
-        # print(collaborators)
+        sort_params = collaborator_filter(request.POST)
+        collaborators = Collaborator.objects.filter(**sort_params)
+
     context = {'collaborators': collaborators}
     return render(request, 'crmInvisionLab/collaborators_index.html', context)
 

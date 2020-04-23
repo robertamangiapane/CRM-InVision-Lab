@@ -23,7 +23,7 @@ def create_collaborator2_compositing_for_test():
     collaborator = Collaborator(name="Second collaborator",
                                 email="email",
                                 phone="5555555556",
-                                position="Rome",
+                                position="London",
                                 availability="Always")
     collaborator.save()
     collaborator = Collaborator.objects.get(name="Second collaborator")
