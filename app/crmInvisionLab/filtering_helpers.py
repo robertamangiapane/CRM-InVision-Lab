@@ -10,7 +10,7 @@ def collaborator_filter(filters):
 def get_columns_dict(filters):
     column_dict = {}
     for k, v in dict(filters).items():
-        if k != "main_skills":
+        if k != "main_skills" and k != "secondary_skills":
             column_dict[k + "__exact"] = v
 
     return column_dict
@@ -19,7 +19,7 @@ def get_columns_dict(filters):
 def get_m_to_m_dict(filters):
     m_to_m_dict = {}
     for k, v in dict(filters).items():
-        if k == "main_skills":
+        if k == "main_skills" or k == "secondary_skills":
             m_to_m_dict[k + "__name__contains"] = v
 
     return m_to_m_dict
@@ -30,5 +30,4 @@ def get_real_filter(filters):
     for k, v in filters.items():
         if filters[k] != "":
             real_filters[k] = v
-
     return real_filters

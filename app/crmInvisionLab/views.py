@@ -44,8 +44,9 @@ def collaborator_add(request):
 
 def collaborator_view(request, id_collaborator):
     collaborator = Collaborator.objects.get(id=id_collaborator)
-    skill = collaborator.main_skills
-    context = {'collaborator': collaborator, 'skill': skill}
+    main_skills = collaborator.main_skills
+    secondary_skills = collaborator.secondary_skills
+    context = {'collaborator': collaborator, 'main_skills': main_skills, 'secondary_skills': secondary_skills}
 
     return render(request, 'crmInvisionLab/collaborator_view.html', context)
 
@@ -61,7 +62,7 @@ def collaborator_edit(request, id_collaborator):
 
             return redirect('/collaborators/view/' + str(id_collaborator))
         else:
-            raise ValidationError("Collaborator must have a name")
+            raise ValidationError("Form is not valid")
     else:
         collaborator_form = AddCollaboratorForm(instance=collaborator)
 

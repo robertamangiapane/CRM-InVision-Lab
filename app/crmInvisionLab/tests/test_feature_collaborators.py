@@ -99,7 +99,7 @@ class FeatureTestInfrastructure(TestCase):
 
         self.assertNotIn("First collaborator", response_text)
 
-    def test_user_can_search_collaborator_with_a_filter(self):
+    def test_user_can_search_collaborator_with_one_filters(self):
         create_collaborator1_3D_for_test()
         create_collaborator2_compositing_for_test()
         response = self.client.get('/collaborators', {
@@ -108,12 +108,30 @@ class FeatureTestInfrastructure(TestCase):
             'phone': "",
             'position': "Rome",
             'availability': "",
-            'main_skills': "3D",
+            'main_skills': "",
             'search': "OK"})
 
         response_text = response.content.decode("utf-8")
 
         self.assertIn("First collaborator", response_text)
+        self.assertNotIn("Second collaborator", response_text)
+
+    def test_user_can_search_collaborator_with_more_filters(self):
+        create_collaborator3_with_main_and_secondary_skills_for_test()
+        create_collaborator2_compositing_for_test()
+        response = self.client.get('/collaborators', {
+            'name': "",
+            'email': "",
+            'phone': "",
+            'position': "Rome",
+            'availability': "",
+            'main_skills': "3D",
+            'secondary_skills': "Secondary",
+            'search': "OK"})
+
+        response_text = response.content.decode("utf-8")
+
+        self.assertIn("Third collaborator", response_text)
         self.assertNotIn("Second collaborator", response_text)
 
 

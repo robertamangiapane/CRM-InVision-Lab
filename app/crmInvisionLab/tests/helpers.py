@@ -32,6 +32,25 @@ def create_collaborator2_compositing_for_test():
 
     return collaborator
 
+def create_collaborator3_with_main_and_secondary_skills_for_test():
+    skill = Skill(name="3D")
+    skill.save()
+    skill2 = Skill(name="Secondary")
+    skill2.save()
+
+    collaborator = Collaborator(name="Third collaborator",
+                                email="email",
+                                phone="5555555555",
+                                position="Rome",
+                                availability="Weekend")
+    collaborator.save()
+    collaborator = Collaborator.objects.get(name="Third collaborator")
+    collaborator.main_skills.add(skill)
+    collaborator.secondary_skills.add(skill2)
+    collaborator.save()
+
+    return collaborator
+
 
 def create_skill_compositing_for_test():
     skill = Skill(name="Compositing")

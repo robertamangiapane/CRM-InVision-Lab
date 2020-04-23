@@ -26,7 +26,8 @@ Here the list of collaborators:
     <tr>
         <td>Collaborator:</td>
 
-        <td>Skill:</td>
+        <td>Main Skill:</td>
+        <td>Secondary Skill:</td>
     </tr>
 {% for collaborator in collaborators %}
     <tr>
@@ -35,6 +36,11 @@ Here the list of collaborators:
         </td>
         <td>
             {% for skill in collaborator.main_skills.all.values %}
+                {{skill.name}};
+            {% endfor %}
+        </td>
+        <td>
+            {% for skill in collaborator.secondary_skills.all.values %}
                 {{skill.name}};
             {% endfor %}
         </td>
