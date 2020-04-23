@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
+from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from .models import Collaborator, Skill
@@ -33,9 +34,8 @@ def collaborator_add(request):
 
         if collaborator_form.is_valid():
             collaborator = collaborator_form.save()
+
             return redirect('/collaborators/view/' + str(collaborator.id))
-        else:
-            raise ValidationError("Form is not valid")
     else:
         collaborator_form = AddCollaboratorForm(instance=collaborator)
 
@@ -74,9 +74,9 @@ def collaborator_delete(request, id_collaborator):
     collaborator = Collaborator.objects.get(id=id_collaborator)
 
     if request.method == "POST":
+
         collaborator.delete()
         return redirect('/collaborators')
-
     else:
         return render(request, 'crmInvisionLab/collaborators_index.html')
 
@@ -92,7 +92,11 @@ def skill_add(request):
     if request.method == "POST":
         skill_name = request.POST["skill"]
         skill = Skill(name=skill_name)
-        skill.save()
+        try:
+            skill.save()
+
+        except:
+            messages.warning(request, 'Skill already exist')
 
         return redirect('/skills')
     else:
@@ -116,7 +120,7 @@ def skill_delete(request, id_skill):
     skill = Skill.objects.get(id=id_skill)
 
     if request.method == "POST":
-
+        messages.warning(request, 'You deleted a skill')
         skill.delete()
         return redirect('/skills')
     else:

@@ -60,18 +60,6 @@ class FeatureTestInfrastructure(TestCase):
         self.assertIn("Compositing", response_text)
         self.assertIn("3D", response_text)
 
-    def test_user_cannot_add_collaborator_without_name(self):
-        create_skill_compositing_for_test()
-
-        with self.assertRaises(ValidationError):
-            self.client.post('/collaborators/add/collaborator',
-                             {'name': "",
-                              'email': "email",
-                              'phone': "5555555555",
-                              'position': "Rome",
-                              'availability': "Weekend",
-                              'main_skills': "Compositing"})
-
     def test_user_can_edit_a_collaborator(self):
         collaborator = create_collaborator1_3D_for_test()
         skill2 = Skill.objects.get(name="3D")
