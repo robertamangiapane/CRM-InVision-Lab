@@ -1,4 +1,6 @@
 psycopg2
 Django
+django-phonenumber-field
+phonenumbers
 django-heroku
 gunicorn

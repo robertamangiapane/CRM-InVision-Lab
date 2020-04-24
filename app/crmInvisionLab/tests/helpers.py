@@ -1,14 +1,14 @@
 from ..models import Collaborator, Skill
 
 
-def create_collaborator1_3D_for_test():
-    skill = Skill(name="3D")
+def create_collaborator1_skill1_for_test():
+    skill = Skill(name="skill one")
     skill.save()
     collaborator = Collaborator(name="First collaborator",
                                 email="email",
                                 phone="5555555555",
-                                position="Rome",
-                                availability="Weekend")
+                                position="Position",
+                                availability="Availability")
     collaborator.save()
     collaborator = Collaborator.objects.get(name="First collaborator")
     collaborator.main_skills.add(skill)
@@ -17,8 +17,8 @@ def create_collaborator1_3D_for_test():
     return collaborator
 
 
-def create_collaborator2_compositing_for_test():
-    skill = Skill(name="Compositing")
+def create_collaborator2_skill2_for_test():
+    skill = Skill(name="skill two")
     skill.save()
     collaborator = Collaborator(name="Second collaborator",
                                 email="email",
@@ -33,7 +33,7 @@ def create_collaborator2_compositing_for_test():
     return collaborator
 
 def create_collaborator3_with_main_and_secondary_skills_for_test():
-    skill = Skill(name="3D")
+    skill = Skill(name="skill one")
     skill.save()
     skill2 = Skill(name="Secondary")
     skill2.save()
@@ -41,8 +41,8 @@ def create_collaborator3_with_main_and_secondary_skills_for_test():
     collaborator = Collaborator(name="Third collaborator",
                                 email="email",
                                 phone="5555555555",
-                                position="Rome",
-                                availability="Weekend")
+                                position="Position",
+                                availability="Availability")
     collaborator.save()
     collaborator = Collaborator.objects.get(name="Third collaborator")
     collaborator.main_skills.add(skill)
@@ -52,14 +52,14 @@ def create_collaborator3_with_main_and_secondary_skills_for_test():
     return collaborator
 
 
-def create_skill_compositing_for_test():
-    skill = Skill(name="Compositing")
+def create_skill2_for_test():
+    skill = Skill(name="skill two")
     skill.save()
     return skill
 
 
-def create_skill_3D_for_test():
-    skill = Skill(name="3D")
+def create_skill1_for_test():
+    skill = Skill(name="skill one")
     skill.save()
     return skill
 

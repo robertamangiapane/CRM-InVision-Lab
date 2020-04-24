@@ -1,8 +1,8 @@
 from django.db.models import *
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Skill(Model):
-    # SKILLS_LIST = TextChoices('Compositing', '3D')
     objects = Manager()
     name = CharField(max_length=200, unique=True)
 
@@ -13,8 +13,8 @@ class Skill(Model):
 class Collaborator(Model):
     objects = Manager()
     name = CharField(max_length=200, unique=True)
-    email = CharField(max_length=200)
-    phone = CharField(max_length=200)
+    email = EmailField(max_length=200)
+    phone = PhoneNumberField(max_length=200, region='GB')
     position = CharField(max_length=200, blank=True)
     availability = CharField(max_length=200, blank=True)
     main_skills = ManyToManyField(Skill, related_name="main_skills", blank=True)
