@@ -1,0 +1,17 @@
+.d-flex {
+float: right;
+margin-right: 70px;
+margin-top: 25px;
+
+}
+
+body {
+background: no-repeat;
+background-image: url("../images/InvisionLab-Logo.png");
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: black;
+    border-color: #6c757d;
+}

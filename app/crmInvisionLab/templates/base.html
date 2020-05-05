@@ -5,7 +5,8 @@
     <title>{% block title %}{% endblock %}</title>
     {% load static %}
     <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" >
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/stylesheet.css' %}" rel="stylesheet">
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </head>
 <body>
@@ -28,6 +29,15 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuSkills">
                 <a class="dropdown-item" href="/skills">Skills</a>
                 <a class="dropdown-item" href="/collaborators/add/collaborator">Add a skill</a>
+            </div>
+        </div>
+        <div class="dropdown mr-1">
+            <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuClients" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Clients
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuClients">
+                <a class="dropdown-item" href="/clients">Clients</a>
+                <a class="dropdown-item" href="/clients/add/client">Add a client</a>
             </div>
         </div>
     </div>
