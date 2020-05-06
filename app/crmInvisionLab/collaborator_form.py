@@ -1,7 +1,7 @@
 from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 
-from .models import Collaborator
+from .models import Collaborator, Skill
 
 
 class AddCollaboratorForm(forms.ModelForm):
@@ -18,11 +18,31 @@ class AddCollaboratorForm(forms.ModelForm):
 
 
 class SearchCollaboratorForm(forms.Form):
-    name = forms.CharField(max_length=200, required=False)
-    email = forms.EmailField(max_length=200, required=False)
-    phone = PhoneNumberField(max_length=200, required=False)
-    position = forms.CharField(max_length=200, required=False)
-    availability = forms.CharField(max_length=200, required=False)
-    main_skills = forms.CharField(max_length=200, required=False)
-    secondary_skills = forms.CharField(max_length=200, required=False)
-
+    name = forms.CharField(
+        max_length=200,
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(
+        max_length=200,
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    phone = PhoneNumberField(
+        max_length=200,
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    position = forms.CharField(
+        max_length=200,
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    availability = forms.CharField(
+        max_length=200,
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    main_skills = forms.ModelChoiceField(
+        queryset=Skill.objects.order_by("name"),
+        required=False,
+        widget=forms.Select(attrs={'class': 'form-control'}))
+    secondary_skills = forms.ModelChoiceField(
+        queryset=Skill.objects.order_by("name"),
+        required=False,
+        widget=forms.Select(attrs={'class': 'form-control'}))

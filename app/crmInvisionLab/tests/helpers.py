@@ -5,8 +5,8 @@ def create_collaborator1_skill1_for_test():
     skill = Skill(name="skill one")
     skill.save()
     collaborator = Collaborator(name="First collaborator",
-                                email="email",
-                                phone="5555555555",
+                                email="test@test.com",
+                                phone="05555555555",
                                 position="Position",
                                 availability="Availability")
     collaborator.save()
@@ -21,8 +21,8 @@ def create_collaborator2_skill2_for_test():
     skill = Skill(name="skill two")
     skill.save()
     collaborator = Collaborator(name="Second collaborator",
-                                email="email",
-                                phone="5555555556",
+                                email="test@test.com",
+                                phone="05555555555",
                                 position="London",
                                 availability="Always")
     collaborator.save()
@@ -32,6 +32,7 @@ def create_collaborator2_skill2_for_test():
 
     return collaborator
 
+
 def create_collaborator3_with_main_and_secondary_skills_for_test():
     skill = Skill(name="skill one")
     skill.save()
@@ -39,8 +40,8 @@ def create_collaborator3_with_main_and_secondary_skills_for_test():
     skill2.save()
 
     collaborator = Collaborator(name="Third collaborator",
-                                email="email",
-                                phone="5555555555",
+                                email="test@test.com",
+                                phone="05555555555",
                                 position="Position",
                                 availability="Availability")
     collaborator.save()

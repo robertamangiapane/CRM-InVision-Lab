@@ -15,9 +15,10 @@ def index(request):
 
 def collaborators_index(request):
     collaborators = Collaborator.objects.order_by("name")
+
     search_form = SearchCollaboratorForm(request.GET)
 
-    if search_form.is_valid():
+    if search_form.is_valid() and request.GET:
 
         sort_params = collaborator_filter(search_form.cleaned_data)
         collaborators = Collaborator.objects.filter(**sort_params)

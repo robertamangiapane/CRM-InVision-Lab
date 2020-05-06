@@ -76,6 +76,7 @@
     
 - Run feature test:
     `./manage.py test`
+    (if staticfiles are missing run `python manage.py collectstatic`)
 
 -------
     

@@ -10,7 +10,11 @@
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 </head>
 <body>
-    {% block menu %}
+<div class="container">
+    <nav class="navbar navbar-light bg-light">
+    <div class="logo-home">
+        <a class="navbar-brand" href="/"></a>
+    </div>
     <div class="d-flex">
         <div class="dropdown mr-1">
             <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuCollaborator" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -38,10 +42,24 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuClients">
                 <a class="dropdown-item" href="/clients">Clients</a>
                 <a class="dropdown-item" href="/clients/add/client">Add a client</a>
+                <a class="dropdown-item" href="#">Search a client</a>
+            </div>
+        </div>
+        <div class="dropdown mr-1">
+            <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuCompetitors" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Competitors
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuCompetitors">
+                <a class="dropdown-item" href="/competitors">Competitors</a>
+                <a class="dropdown-item" href="/competitors/add/competitor">Add a competitor</a>
+                <a class="dropdown-item" href="#">Search a competitor</a>
             </div>
         </div>
     </div>
-    {% endblock %}
-    {% block content %}{% endblock %}
+</nav>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    </div>
 </body>
 </html>
