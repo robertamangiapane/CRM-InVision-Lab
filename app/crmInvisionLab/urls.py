@@ -1,11 +1,12 @@
 from django.urls import path
 from . import views
+from .collaborators.collaborators_controller import *
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('collaborators', views.collaborators_index, name="collaborators"),
-    path('collaborators/add/collaborator', views.collaborator_add, name="collaborator_add"),
-    path('collaborators/view/<str:id_collaborator>', views.collaborator_view, name='collaborator_view'),
+    path('collaborators', CollaboratorList.as_view(), name="collaborators"),
+    path('collaborators/add/collaborator', CollaboratorAdd.as_view(), name="collaborator_add"),
+    path('collaborators/view/<str:pk>', CollaboratorView.as_view(), name='collaborator_view'),
     path('collaborators/edit/<str:id_collaborator>', views.collaborator_edit, name='collaborator_edit'),
     path('collaborators/delete/<str:id_collaborator>', views.collaborator_delete, name='collaborator_delete'),
     path('skills', views.skill_index, name="skills"),

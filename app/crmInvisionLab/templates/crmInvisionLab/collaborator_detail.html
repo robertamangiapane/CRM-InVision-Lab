@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}View collaborator{% endblock %}
+{% block content %}
+
+<div class="collaborator-menu">
+    <a href="/collaborators/edit/{{ collaborator.id }}">
+        <button type="button" class="btn btn-secondary">Edit collaborator</button>
+    </a>
+    <form action="/collaborators/delete/{{ collaborator.id }}" method="post">{% csrf_token %}
+        <button type="button" class="btn btn-secondary">Delete collaborator</button>
+    </form>
+</div>
+
+Collaborator:
+{% for field in fields %}
+    {{field}};
+{% endfor %}
+
+{% endblock %}

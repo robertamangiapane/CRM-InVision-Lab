@@ -1,0 +1,44 @@
+
+<h5>Search a collaborator:</h5>
+<div class="search-form">
+<form action="/collaborators" method="get">{% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            {{ collaborator_search_form.name.label }}
+            {{ collaborator_search_form.name }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ collaborator_search_form.email.label }}
+            {{ collaborator_search_form.email }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ collaborator_search_form.phone.label }}
+            {{ collaborator_search_form.phone }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ collaborator_search_form.position.label }}
+            {{ collaborator_search_form.position }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ collaborator_search_form.availability.label }}
+            {{ collaborator_search_form.availability }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ collaborator_search_form.main_skills.label }}
+            {{ collaborator_search_form.main_skills }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ collaborator_search_form.secondary_skills.label }}
+            {{ collaborator_search_form.secondary_skills }}
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit" name="search">Search</button>
+</form>
+</div>
+

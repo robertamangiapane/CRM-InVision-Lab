@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..filtering_helpers import *
+from app.crmInvisionLab.collaborators.collaborators_filtering_helpers import *
 from ..models import Skill
 
 

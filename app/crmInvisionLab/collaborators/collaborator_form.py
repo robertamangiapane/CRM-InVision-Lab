@@ -1,7 +1,7 @@
 from django import forms
 from phonenumber_field.formfields import PhoneNumberField
 
-from .models import Collaborator, Skill
+from ..models import Collaborator, Skill
 
 
 class AddCollaboratorForm(forms.ModelForm):
@@ -15,6 +15,16 @@ class AddCollaboratorForm(forms.ModelForm):
                   'availability': "When is available",
                   'main_skills': "Main skills",
                   'secondary_skills': "Secondary skills"}
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.fields['name'].widget.attrs.update({'class': 'form-control'})
+    #     self.fields['email'].widget.attrs.update({'class': 'form-control'})
+    #     self.fields['phone'].widget.attrs.update({'class': 'form-control'})
+    #     self.fields['position'].widget.attrs.update({'class': 'form-control'})
+    #     self.fields['availability'].widget.attrs.update({'class': 'form-control'})
+    #     self.fields['main_skills'].widget.attrs.update({'class': 'form-control'})
+    #     self.fields['secondary_skills'].widget.attrs.update({'class': 'form-control'})
 
 
 class SearchCollaboratorForm(forms.Form):
