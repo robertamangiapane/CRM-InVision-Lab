@@ -3,17 +3,26 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView
 from django.views.generic.detail import DetailView
 from .collaborator_form import AddCollaboratorForm, SearchCollaboratorForm
+from .collaborators_filtering_helpers import *
 
 
 class CollaboratorList(ListView):
     model = Collaborator
     paginate_by = 50
+    ordering = 'name'
+
+    def get_queryset(self):
+        collaborator_search_form = SearchCollaboratorForm(self.request.GET)
+        sort_params = collaborator_filter({})
+        if collaborator_search_form.is_valid() and self.request.GET:
+            sort_params = collaborator_filter(collaborator_search_form.cleaned_data)
+
+        return Collaborator.objects.filter(**sort_params)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        collaborator_search_form = SearchCollaboratorForm()
+        collaborator_search_form = SearchCollaboratorForm(self.request.GET)
         context['collaborator_search_form'] = collaborator_search_form
-        # collaborators = Collaborator.objects.filter(**sort_params)
         return context
 
 
@@ -44,7 +53,7 @@ class CollaboratorView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # collaborator = Collaborator.objects.get(id=id_collaborator)
-        # context['now'] = timezone.now()
+        context['collaborator'] = self.object
         return context
+
 

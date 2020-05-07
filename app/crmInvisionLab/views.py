@@ -40,14 +40,14 @@ def index(request):
 #     return render(request, 'crmInvisionLab/collaborator_add.html', {'collaborator_add_form': collaborator_add_form})
 
 
-def collaborator_view(request, id_collaborator):
-    collaborator = Collaborator.objects.get(id=id_collaborator)
-    main_skills = collaborator.main_skills
-    secondary_skills = collaborator.secondary_skills
-    # fields = collaborator._meta.get_all_field_names()
-    context = {'collaborator': collaborator, 'main_skills': main_skills, 'secondary_skills': secondary_skills}
-
-    return render(request, 'crmInvisionLab/collaborator_view.html', context)
+# def collaborator_view(request, id_collaborator):
+#     collaborator = Collaborator.objects.get(id=id_collaborator)
+#     main_skills = collaborator.main_skills
+#     secondary_skills = collaborator.secondary_skills
+#     # fields = collaborator._meta.get_all_field_names()
+#     context = {'collaborator': collaborator, 'main_skills': main_skills, 'secondary_skills': secondary_skills}
+#
+#     return render(request, 'crmInvisionLab/collaborator_view.html', context)
 
 
 def collaborator_edit(request, id_collaborator):

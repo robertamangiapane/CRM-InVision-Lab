@@ -11,9 +11,49 @@
     </form>
 </div>
 
-Collaborator:
-{% for field in fields %}
-    {{field}};
-{% endfor %}
+<div class="collaborator-details">
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Collaborator</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Position</th>
+            <th scope="col">Availability</th>
+            <th scope="col">Main skills</th>
+            <th scope="col">Secondary skills</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                {{collaborator.name}}
+            </td>
+            <td>
+                {{collaborator.email}}
+            </td>
+            <td>
+                {{collaborator.phone}}
+            </td>
+            <td>
+                {{collaborator.position}}
+            </td>
+            <td>
+                {{collaborator.availability}}
+            </td>
+            <td>
+                {% for skill in collaborator.main_skills.all.values %}
+                    {{skill.name}};
+                {% endfor %}
+            </td>
+            <td>
+                {% for skill in collaborator.secondary_skills.all.values %}
+                    {{skill.name}};
+                {% endfor %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}
