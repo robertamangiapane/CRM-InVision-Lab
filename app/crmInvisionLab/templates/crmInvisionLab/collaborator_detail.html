@@ -3,12 +3,12 @@
 {% block content %}
 
 <div class="collaborator-menu">
-    <a href="/collaborators/edit/{{ collaborator.id }}">
-        <button type="button" class="btn btn-secondary">Edit collaborator</button>
+    <a href="/collaborators/update/{{ collaborator.id }}">
+        <button type="button" class="btn btn-secondary">Update a collaborator</button>
     </a>
-    <form action="/collaborators/delete/{{ collaborator.id }}" method="post">{% csrf_token %}
+    <a href="/collaborators/delete/{{ collaborator.id }}">
         <button type="button" class="btn btn-secondary">Delete collaborator</button>
-    </form>
+    </a>
 </div>
 
 <div class="collaborator-details">
