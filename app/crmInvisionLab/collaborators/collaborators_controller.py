@@ -39,6 +39,9 @@ class CollaboratorAdd(CreateView):
         form.fields['availability'].widget.attrs.update({'class': 'form-control'})
         form.fields['main_skills'].widget.attrs.update({'class': 'form-control'})
         form.fields['secondary_skills'].widget.attrs.update({'class': 'form-control'})
+        # form.fields['showreel'].widget.attrs.update({'class': 'form-control'})
+        # form.fields['ongoing_projects'].widget.attrs.update({'class': 'form-control'})
+        # form.fields['past_collaborations'].widget.attrs.update({'class': 'form-control'})
         return form
 
     def form_valid(self, form):
@@ -76,6 +79,9 @@ class CollaboratorUpdate(UpdateView):
         form.fields['availability'].widget.attrs.update({'class': 'form-control'})
         form.fields['main_skills'].widget.attrs.update({'class': 'form-control'})
         form.fields['secondary_skills'].widget.attrs.update({'class': 'form-control'})
+        form.fields['showreel'].widget.attrs.update({'class': 'form-control'})
+        form.fields['ongoing_projects'].widget.attrs.update({'class': 'form-control'})
+        form.fields['past_collaborations'].widget.attrs.update({'class': 'form-control'})
         return form
 
     def form_valid(self, form):

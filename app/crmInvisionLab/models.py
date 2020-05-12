@@ -10,6 +10,14 @@ class Skill(Model):
         return self.name
 
 
+class Job(Model):
+    objects = Manager()
+    name = CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
 class Collaborator(Model):
     objects = Manager()
     name = CharField(max_length=200, unique=True)
@@ -19,6 +27,6 @@ class Collaborator(Model):
     availability = CharField(max_length=200, blank=True)
     main_skills = ManyToManyField(Skill, related_name="main_skills", blank=True)
     secondary_skills = ManyToManyField(Skill, related_name="secondary_skills", blank=True)
-    # showreel = CharField(max_length=200)
-    # worked_on = CharField(max_length=200)
-    # connection = CharField(max_length=200)
+    showreel = URLField(max_length=200, blank=True)
+    ongoing_projects = ManyToManyField(Job, related_name="ongoing_projects", blank=True)
+    past_collaborations = ManyToManyField(Job, related_name="past_collaborations", blank=True)
