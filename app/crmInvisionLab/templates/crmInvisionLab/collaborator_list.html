@@ -3,32 +3,34 @@
 {% block content %}
 {% include "base_collaborator_search_form.html" %}
 
-<table class="table table-sm">
-    <thead>
-    <tr>
-        <th scope="col">Collaborator</th>
-        <th scope="col">Main Skill</th>
-        <th scope="col">Secondary Skill</th>
-    </tr>
-    </thead>
-{% for collaborator in object_list %}
-    <tbody>
-    <tr>
-        <td>
-            <a class="collaborator-name" href="collaborators/view/{{ collaborator.id }}">{{collaborator.name}}</a>
-        </td>
-        <td>
-            {% for skill in collaborator.main_skills.all.values %}
-                {{skill.name}};
-            {% endfor %}
-        </td>
-        <td>
-            {% for skill in collaborator.secondary_skills.all.values %}
-                {{skill.name}};
-            {% endfor %}
-        </td>
-    </tr>
-    </tbody>
-{% endfor %}
-</table>
+<div class="collaborators-list">
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Collaborator</th>
+            <th scope="col">Main Skill</th>
+            <th scope="col">Secondary Skill</th>
+        </tr>
+        </thead>
+    {% for collaborator in object_list %}
+        <tbody>
+        <tr>
+            <td>
+                <a class="collaborator-name" href="collaborators/view/{{ collaborator.id }}">{{collaborator.name}}</a>
+            </td>
+            <td>
+                {% for skill in collaborator.main_skills.all.values %}
+                    {{skill.name}};
+                {% endfor %}
+            </td>
+            <td>
+                {% for skill in collaborator.secondary_skills.all.values %}
+                    {{skill.name}};
+                {% endfor %}
+            </td>
+        </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+</div>
 {% endblock %}

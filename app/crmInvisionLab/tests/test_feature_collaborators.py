@@ -64,7 +64,7 @@ class FeatureTestInfrastructure(TestCase):
         skill2 = Skill.objects.get(name="skill one")
         skill = create_skill2_for_test()
 
-        self.client.post('/collaborators/edit/' + str(collaborator.id),
+        self.client.post('/collaborators/update/' + str(collaborator.id),
                          {'name': "Collaborator edited",
                           'email': "test@test.com",
                           'phone': "05555555555",

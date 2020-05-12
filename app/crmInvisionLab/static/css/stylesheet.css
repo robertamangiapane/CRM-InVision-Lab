@@ -29,11 +29,16 @@
     margin-top: 2em;
 }
 
-.table td, .table th{
+.collaborators-list .table td, .table th{
     border-top: none;
     border-left: 1px solid #dee2e6;
     border-right: 1px solid #dee2e6;
     border-bottom: 1px solid #dee2e6;
+}
+
+.skills-list .table td, .table th {
+    width: 600px;
+    border: none;
 }
 
 .collaborator-name {
