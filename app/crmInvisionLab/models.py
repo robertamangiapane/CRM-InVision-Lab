@@ -13,6 +13,7 @@ class Skill(Model):
 class Job(Model):
     objects = Manager()
     name = CharField(max_length=200)
+    ended = BooleanField(default=False)
 
     def __str__(self):
         return self.name

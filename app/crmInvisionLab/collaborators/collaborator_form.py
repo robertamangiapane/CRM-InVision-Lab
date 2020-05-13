@@ -59,10 +59,10 @@ class SearchCollaboratorForm(forms.Form):
         queryset=Skill.objects.order_by("name"),
         required=False,
         widget=forms.Select(attrs={'class': 'form-control'}))
-    showreel = forms.URLField(
-        max_length=200,
-        required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control'}))
+    # showreel = forms.URLField(
+    #     max_length=200,
+    #     required=False,
+    #     widget=forms.TextInput(attrs={'class': 'form-control'}))
     ongoing_projects = forms.ModelChoiceField(
         queryset=Job.objects.order_by("name"),
         required=False,
