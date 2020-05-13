@@ -3,11 +3,11 @@ from django.test import TestCase
 from .helpers import *
 
 
-class FeatureTestInfrastructure(TestCase):
+class FeatureTestCollaborator(TestCase):
     def setUp(self):
         self.client = Client()
 
-    def test_homepage_displays_all_collaborators(self):
+    def test_my_collaborators_page_displays_all_collaborators(self):
         collaborator1 = create_collaborator1_skill1_for_test()
         collaborator2 = create_collaborator2_skill2_for_test()
 

@@ -28,21 +28,9 @@ class CollaboratorList(ListView):
 
 class CollaboratorAdd(CreateView):
     model = Collaborator
-    fields = AddCollaboratorForm.Meta.fields
 
     def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields['name'].widget.attrs.update({'class': 'form-control'})
-        form.fields['email'].widget.attrs.update({'class': 'form-control'})
-        form.fields['phone'].widget.attrs.update({'class': 'form-control'})
-        form.fields['position'].widget.attrs.update({'class': 'form-control'})
-        form.fields['availability'].widget.attrs.update({'class': 'form-control'})
-        form.fields['main_skills'].widget.attrs.update({'class': 'form-control'})
-        form.fields['secondary_skills'].widget.attrs.update({'class': 'form-control'})
-        form.fields['showreel'].widget.attrs.update({'class': 'form-control'})
-        form.fields['ongoing_projects'].widget.attrs.update({'class': 'form-control'})
-        form.fields['past_collaborations'].widget.attrs.update({'class': 'form-control'})
-        return form
+        return super().get_form(AddCollaboratorForm)
 
     def form_valid(self, form):
         collaborator = form.save()
@@ -67,22 +55,11 @@ class CollaboratorDelete(DeleteView):
 
 class CollaboratorUpdate(UpdateView):
     model = Collaborator
-    fields = AddCollaboratorForm.Meta.fields
     template_name_suffix = '_update_form'
 
     def get_form(self, form_class=None):
-        form = super().get_form(form_class)
-        form.fields['name'].widget.attrs.update({'class': 'form-control'})
-        form.fields['email'].widget.attrs.update({'class': 'form-control'})
-        form.fields['phone'].widget.attrs.update({'class': 'form-control'})
-        form.fields['position'].widget.attrs.update({'class': 'form-control'})
-        form.fields['availability'].widget.attrs.update({'class': 'form-control'})
-        form.fields['main_skills'].widget.attrs.update({'class': 'form-control'})
-        form.fields['secondary_skills'].widget.attrs.update({'class': 'form-control'})
-        form.fields['showreel'].widget.attrs.update({'class': 'form-control'})
-        form.fields['ongoing_projects'].widget.attrs.update({'class': 'form-control'})
-        form.fields['past_collaborations'].widget.attrs.update({'class': 'form-control'})
-        return form
+        return super().get_form(AddCollaboratorForm)
+
 
     def form_valid(self, form):
         self.object.save()

@@ -78,3 +78,17 @@
 .collaborator-menu .btn {
     margin-top: 0.5em;
 }
+
+.project-menu {
+    float: right;
+}
+
+.project-details {
+    clear: both;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+.project-menu .btn {
+    margin-top: 0.5em;
+}

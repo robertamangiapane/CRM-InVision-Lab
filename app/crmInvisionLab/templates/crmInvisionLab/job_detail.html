@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Project details{% endblock %}
+{% block content %}
+
+<div class="project-menu">
+    <a href="/projects/update/{{ project.id }}">
+        <button type="button" class="btn btn-secondary">Update project info</button>
+    </a>
+    <a href="/projects/delete/{{ project.id }}">
+        <button type="button" class="btn btn-secondary">Delete project</button>
+    </a>
+</div>
+
+<div class="project-details">
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Project name</th>
+            <th scope="col">Collaborators</th>
+            <th scope="col">Preview</th>
+            <th scope="col">Link</th>
+            <th scope="col">Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                {{project.name}}
+            </td>
+            <td>
+                {{collaborators}}
+            </td>
+            <td>
+                {{project.preview}}
+            </td>
+            <td>
+                {{project.link}}
+            </td>
+            <td>
+                {{status}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

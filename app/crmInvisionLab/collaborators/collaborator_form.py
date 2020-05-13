@@ -14,9 +14,7 @@ class AddCollaboratorForm(forms.ModelForm):
                   'availability',
                   'main_skills',
                   'secondary_skills',
-                  'showreel',
-                  'ongoing_projects',
-                  'past_collaborations']
+                  'showreel']
 
         labels = {'name': "Name",
                   'email': "Email",
@@ -25,9 +23,20 @@ class AddCollaboratorForm(forms.ModelForm):
                   'availability': "When is available",
                   'main_skills': "Main skills",
                   'secondary_skills': "Secondary skills",
-                  'showreel': "Showreel link",
-                  'ongoing_projects': "Ongoing projects",
-                  'past_collaborations': "Past collaborations"}
+                  'showreel': "Showreel link"}
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update({'class': 'form-control'})
+        self.fields['email'].widget.attrs.update({'class': 'form-control'})
+        self.fields['phone'].widget.attrs.update({'class': 'form-control'})
+        self.fields['position'].widget.attrs.update({'class': 'form-control'})
+        self.fields['availability'].widget.attrs.update({'class': 'form-control'})
+        self.fields['main_skills'].widget.attrs.update({'class': 'form-control'})
+        self.fields['secondary_skills'].widget.attrs.update({'class': 'form-control'})
+        self.fields['showreel'].widget.attrs.update({'class': 'form-control'})
+        # self.fields['ongoing_projects'].widget.attrs.update({'class': 'form-control'})
+        # self.fields['past_collaborations'].widget.attrs.update({'class': 'form-control'})
 
 
 class SearchCollaboratorForm(forms.Form):
@@ -59,10 +68,10 @@ class SearchCollaboratorForm(forms.Form):
         queryset=Skill.objects.order_by("name"),
         required=False,
         widget=forms.Select(attrs={'class': 'form-control'}))
-    # showreel = forms.URLField(
-    #     max_length=200,
-    #     required=False,
-    #     widget=forms.TextInput(attrs={'class': 'form-control'}))
+    showreel = forms.URLField(
+        max_length=200,
+        required=False,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
     ongoing_projects = forms.ModelChoiceField(
         queryset=Job.objects.order_by("name"),
         required=False,

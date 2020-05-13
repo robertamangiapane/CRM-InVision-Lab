@@ -1,0 +1,22 @@
+<h5>Add a new project:</h5>
+<div class="search-form">
+    <form method="post">{% csrf_token %}
+        <div class="form-group col-md-6">
+            {{ form.name.label }}
+            {{ form.name }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form.preview.label }}
+            {{ form.preview }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form.link.label }}
+            {{ form.link }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form.ended.label }}
+            {{ form.ended }}
+        </div>
+        <button class="btn btn-primary" type="submit" name="add">Add</button>
+    </form>
+</div>

@@ -3,11 +3,11 @@ from django.test import TestCase
 from .helpers import *
 
 
-class FeatureTestInfrastructure(TestCase):
+class FeatureTestSkill(TestCase):
     def setUp(self):
         self.client = Client()
 
-    def test_display_skills_homepage(self):
+    def test_skill_page_displays_all_skills(self):
         create_skill1_for_test()
         create_skill2_for_test()
 

@@ -13,6 +13,8 @@ class Skill(Model):
 class Job(Model):
     objects = Manager()
     name = CharField(max_length=200)
+    preview = URLField(max_length=200, blank=True)
+    link = URLField(max_length=200, blank=True)
     ended = BooleanField(default=False)
 
     def __str__(self):
