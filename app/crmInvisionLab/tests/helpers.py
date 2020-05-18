@@ -1,4 +1,4 @@
-from ..models import Collaborator, Skill
+from ..models import Collaborator, Skill, Job
 
 
 def create_collaborator1_skill1_for_test():
@@ -69,3 +69,17 @@ def create_wrong_skill_for_test():
     skill = Skill(name="Wrong")
     skill.save()
     return skill
+
+
+def create_finished_project():
+    project = Job(name="Finished",
+                  ended=True)
+    project.save()
+    return project
+
+
+def create_not_finished_project():
+    project = Job(name="Not finished",
+                  ended=False)
+    project.save()
+    return project

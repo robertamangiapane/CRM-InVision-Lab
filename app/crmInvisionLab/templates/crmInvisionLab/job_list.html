@@ -1,4 +1,41 @@
 {% extends "base.html" %}
 {% block title %}My Projects{% endblock %}
 {% block content %}
+
+<div class="projects-list">
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Projects</th>
+            <th scope="col">Preview</th>
+            <th scope="col">Link</th>
+            <th scope="col">Status</th>
+
+        </tr>
+        </thead>
+    {% for project in projects %}
+        <tbody>
+        <tr>
+            <td>
+                <a class="project-name" href="/projects/view/{{ project.id }}">{{project.name}}</a>
+            </td>
+            <td>
+                {{project.preview}}
+            </td>
+            <td>
+                {{project.link}}
+            </td>
+            <td>
+                {% if project.ended %}
+                    Finished
+                {% else %}
+                    Ongoing
+                {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+</div>
+
 {% endblock %}

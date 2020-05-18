@@ -17,9 +17,6 @@ class Job(Model):
     link = URLField(max_length=200, blank=True)
     ended = BooleanField(default=False)
 
-    def __str__(self):
-        return self.name
-
 
 class Collaborator(Model):
     objects = Manager()

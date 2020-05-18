@@ -16,7 +16,7 @@
         <tbody>
         <tr>
             <td>
-                <a class="collaborator-name" href="collaborators/view/{{ collaborator.id }}">{{collaborator.name}}</a>
+                <a class="collaborator-name" href="/collaborators/view/{{ collaborator.id }}">{{collaborator.name}}</a>
             </td>
             <td>
                 {% for skill in collaborator.main_skills.all.values %}

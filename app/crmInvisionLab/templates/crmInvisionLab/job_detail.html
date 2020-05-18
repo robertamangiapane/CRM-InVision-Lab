@@ -37,7 +37,11 @@
                 {{project.link}}
             </td>
             <td>
-                {{status}}
+                {% if project.ended %}
+                    Finished
+                {% else %}
+                    Ongoing
+                {% endif %}
             </td>
         </tr>
         </tbody>

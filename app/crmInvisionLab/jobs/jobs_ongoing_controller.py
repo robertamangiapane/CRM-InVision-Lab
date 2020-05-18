@@ -5,6 +5,23 @@ from django.views.generic.detail import DetailView
 from .job_form import AddJobForm
 
 
+class ProjectList(ListView):
+    model = Job
+    paginate_by = 50
+    ordering = "name"
+
+    def get_context_data(self, **kwargs):
+        if self.request.path == '/projects':
+            projects = Job.objects.all()
+        elif self.request.path == '/projects/old':
+            projects = Job.objects.filter(ended=True)
+        else:
+            projects = Job.objects.filter(ended=False)
+
+        context = {'projects': projects}
+        return context
+
+
 class ProjectAdd(CreateView):
     model = Job
 
@@ -23,10 +40,5 @@ class ProjectView(DetailView):
 
     def get_context_data(self, **kwargs):
         project = self.object
-        status = "Not finished"
-        # collaborators = ""
-        if project.ended:
-            status = "Project finished"
-
-        context = {'project': project, 'status': status}
+        context = {'project': project}
         return context
