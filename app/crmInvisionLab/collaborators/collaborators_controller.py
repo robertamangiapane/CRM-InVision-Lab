@@ -60,7 +60,6 @@ class CollaboratorUpdate(UpdateView):
     def get_form(self, form_class=None):
         return super().get_form(AddCollaboratorForm)
 
-
     def form_valid(self, form):
         self.object.save()
         self.success_url = '/collaborators/view/' + str(self.object.id)

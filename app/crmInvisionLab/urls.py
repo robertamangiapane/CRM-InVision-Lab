@@ -16,7 +16,9 @@ urlpatterns = [
     path('projects/old', ProjectList.as_view(), name='projects_old'),
     path('projects/add/project', ProjectAdd.as_view(), name='project_add'),
     path('projects/view/<str:pk>', ProjectView.as_view(), name='project_view'),
+    path('projects/update/<str:pk>', ProjectUpdate.as_view(), name="project_update"),
+    path('projects/delete/<str:pk>', ProjectDelete.as_view(), name="project_delete"),
     path('skills', SkillAdd.as_view(), name="skills"),
     path('skills/update/<str:pk>', SkillUpdate.as_view(), name="skills_edit"),
-    path('skills/delete/<str:pk>', SkillDelete.as_view(), name="skill_id_delete")
+    path('skills/delete/<str:pk>', SkillDelete.as_view(), name="skill_delete")
 ]

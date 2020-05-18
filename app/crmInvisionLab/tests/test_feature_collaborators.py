@@ -59,7 +59,7 @@ class FeatureTestCollaborator(TestCase):
         self.assertIn("skill two", response_text)
         self.assertIn("skill one", response_text)
 
-    def test_user_can_edit_a_collaborator(self):
+    def test_user_can_update_a_collaborator(self):
         collaborator = create_collaborator1_skill1_for_test()
         skill2 = Skill.objects.get(name="skill one")
         skill = create_skill2_for_test()
@@ -86,7 +86,7 @@ class FeatureTestCollaborator(TestCase):
 
         self.assertNotIn("First collaborator", response_text)
 
-    def test_user_can_search_collaborator_with_one_filters(self):
+    def test_user_can_search_collaborator_with_one_filter(self):
         create_collaborator1_skill1_for_test()
         create_collaborator2_skill2_for_test()
         response = self.client.get('/collaborators', {
