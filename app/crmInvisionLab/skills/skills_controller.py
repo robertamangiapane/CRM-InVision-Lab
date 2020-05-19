@@ -26,6 +26,11 @@ class SkillAdd(CreateView):
         return context
 
 
+class SkillDelete(DeleteView):
+    model = Skill
+    success_url = '/skills'
+
+
 class SkillUpdate(UpdateView):
     template_name_suffix = '_list'
     model = Skill
@@ -33,7 +38,5 @@ class SkillUpdate(UpdateView):
     success_url = '/skills'
 
 
-class SkillDelete(DeleteView):
-    model = Skill
-    success_url = '/skills'
+
 

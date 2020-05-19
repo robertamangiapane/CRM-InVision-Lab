@@ -45,9 +45,9 @@
             </form>
         </td>
         <td>
-            <form action="/skills/delete/{{skill.id}}" method="post">{% csrf_token %}
-                <button type="submit" class="btn btn-secondary">Delete Skill</button>
-            </form>
+            <a href="/skills/delete/{{skill.id}}">
+                <button type="button" class="btn btn-secondary">Delete Skill</button>
+            </a>
         </td>
     </tr>
     {% endfor %}
