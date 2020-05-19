@@ -36,6 +36,3 @@ class SearchJobForm(forms.Form):
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    ended = forms.BooleanField(
-        required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control'}))

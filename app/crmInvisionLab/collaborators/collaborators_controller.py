@@ -3,7 +3,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
 from .collaborator_form import AddCollaboratorForm, SearchCollaboratorForm
-from .collaborators_filtering_helpers import *
+from ..filtering_helpers import *
 
 
 class CollaboratorList(ListView):
@@ -13,10 +13,9 @@ class CollaboratorList(ListView):
 
     def get_queryset(self):
         collaborator_search_form = SearchCollaboratorForm(self.request.GET)
-        sort_params = collaborator_filter({})
+        sort_params = get_filters({})
         if collaborator_search_form.is_valid() and self.request.GET:
-            sort_params = collaborator_filter(collaborator_search_form.cleaned_data)
-
+            sort_params = get_filters(collaborator_search_form.cleaned_data)
         return Collaborator.objects.filter(**sort_params).order_by(self.ordering)
 
     def get_context_data(self, **kwargs):

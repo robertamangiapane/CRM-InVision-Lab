@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 from .collaborators.collaborators_controller import *
 from .skills.skills_controller import *
-from .jobs.jobs_ongoing_controller import *
+from .jobs.jobs_controller import *
 
 urlpatterns = [
     path('', views.index, name='index'),

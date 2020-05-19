@@ -17,7 +17,6 @@ class FeatureTestProject(TestCase):
         self.assertIn("Finished", response_text)
         self.assertIn("Not finished", response_text)
 
-
     def test_my_ongoing_projects_display_only_not_finished_projects(self):
         create_finished_project()
         create_not_finished_project()
@@ -69,14 +68,14 @@ class FeatureTestProject(TestCase):
         response_text = response.content.decode("utf-8")
         self.assertIn("Project finished", response_text)
 
-    # def test_user_can_search_project_with_one_filter(self):
-    #     create_not_finished_project()
-    #     create_finished_project()
-    #     response = self.client.get('/projects', {
-    #         'name': "Finished",
-    #         'search': "OK"})
-    #
-    #     response_text = response.content.decode("utf-8")
-    #
-    #     self.assertIn("Finished", response_text)
-    #     self.assertNotIn("Not finished", response_text)
+    def test_user_can_search_project_with_one_filter(self):
+        create_not_finished_project()
+        create_finished_project()
+        response = self.client.get('/projects', {
+            'name': "Finished",
+            'search': "OK"})
+
+        response_text = response.content.decode("utf-8")
+
+        self.assertIn("Finished", response_text)
+        self.assertNotIn("Not finished", response_text)

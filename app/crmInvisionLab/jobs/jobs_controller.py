@@ -3,6 +3,7 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
 from .job_form import AddJobForm, SearchJobForm
+from ..filtering_helpers import *
 
 
 class ProjectList(ListView):
@@ -10,25 +11,25 @@ class ProjectList(ListView):
     paginate_by = 50
     ordering = "name"
 
-    # def get_queryset(self):
-    #     project_search_form = SearchJobForm(self.request.GET)
-    #     print(project_search_form.data['name'])
-    #     sort_params = "collaborator_filter({})"
-    #     # if project_search_form.is_valid() and self.request.GET:
-    #     #     sort_params = ""
-    #     #     # sort_params = collaborator_filter(search_form.cleaned_data)
-    #     # return Job.objects.filter(**sort_params).order_by(self.ordering)
-    #     return Job.objects.all()
+    def get_queryset(self):
+        project_search_form = SearchJobForm(self.request.GET)
+        sort_params = get_filters({})
+        if project_search_form.is_valid() and self.request.GET:
+            sort_params = get_filters(project_search_form.cleaned_data)
+        return Job.objects.filter(**sort_params).order_by(self.ordering)
 
     def get_context_data(self, **kwargs):
-        if self.request.path == '/projects':
-            projects = Job.objects.all()
-        elif self.request.path == '/projects/old':
-            projects = Job.objects.filter(ended=True)
-        else:
-            projects = Job.objects.filter(ended=False)
+        project_search_form = SearchJobForm(self.request.GET)
 
-        context = {'projects': projects}
+        if self.request.path == '/projects/old':
+            context = {'include_form': "False", 'projects': Job.objects.filter(ended=True)}
+
+        elif self.request.path == '/projects/ongoing':
+            context = {'include_form': "False", 'projects': Job.objects.filter(ended=False)}
+
+        else:
+            context = {'include_form': "True", 'project_search_form': project_search_form, 'projects': self.object_list}
+
         return context
 
 

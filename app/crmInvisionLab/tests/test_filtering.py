@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..collaborators.collaborators_filtering_helpers import *
+from ..filtering_helpers import *
 from ..models import Skill
 
 
