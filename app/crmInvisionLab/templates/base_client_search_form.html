@@ -1,0 +1,53 @@
+<h5>Search a client:</h5>
+<div class="search-form">
+<form action="/clients" method="get">{% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            {{ client_search_form.name.label }}
+            {{ client_search_form.name }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ client_search_form.email.label }}
+            {{ client_search_form.email }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ client_search_form.phone.label }}
+            {{ client_search_form.phone }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ client_search_form.position.label }}
+            {{ client_search_form.position }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ client_search_form.contact.label }}
+            {{ client_search_form.contact }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ client_search_form.contact_phone.label }}
+            {{ client_search_form.contact_phone }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ client_search_form.contact_email.label }}
+            {{ client_search_form.contact_email }}
+        </div>
+    </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ client_search_form.ongoing_projects.label }}
+            {{ client_search_form.ongoing_projects }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ client_search_form.old_projects.label }}
+            {{ client_search_form.old_projects }}
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit" name="search">Search</button>
+</form>
+</div>
+

@@ -38,9 +38,11 @@ class FeatureTestProject(TestCase):
         self.assertNotIn("Not finished", response_text)
 
     def test_user_can_add_new_project(self):
-
+        collaborator1 = create_collaborator1_skill1_for_test()
+        collaborator2 = create_collaborator2_skill2_for_test()
         response = self.client.post('/projects/add/project',
-                                    {'name': 'First project'})
+                                    {'name': 'First project',
+                                     'collaborators': [collaborator1.id, collaborator2.id]})
         project = Job.objects.get(name='First project')
         self.assertRedirects(response, '/projects/view/' + str(project.id))
 

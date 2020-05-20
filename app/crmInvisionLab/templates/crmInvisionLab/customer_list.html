@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}My Clients{% endblock %}
+{% block content %}
+{% include "base_client_search_form.html" %}
+
+<div class="client-list">
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Client</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Ongoing Projects</th>
+            <th scope="col">Old Projects</th>
+        </tr>
+        </thead>
+    {% for client in object_list %}
+        <tbody>
+        <tr>
+            <td>
+                <a class="client-name" href="/clients/view/{{ client.id }}">{{client.name}}</a>
+            </td>
+            <td>
+                {{contact.name}}
+            </td>
+            <td>
+                {% for project in client.ongoing_projects.all.values %}
+                    <a class="project-name" href="/projects/view/{{ project.id }}">{{project.name}}</a>
+                {% endfor %}
+            </td>
+            <td>
+                {% for project in client.old_projects.all.values %}
+                    <a class="project-name" href="/projects/view/{{ project.id }}">{{project.name}}</a>
+                {% endfor %}
+            </td>
+        </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}

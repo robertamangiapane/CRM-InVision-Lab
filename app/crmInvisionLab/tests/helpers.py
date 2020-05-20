@@ -1,4 +1,4 @@
-from ..models import Collaborator, Skill, Job
+from ..models import Collaborator, Skill, Job, Customer
 
 
 def create_collaborator1_skill1_for_test():
@@ -83,3 +83,15 @@ def create_not_finished_project():
                   ended=False)
     project.save()
     return project
+
+
+def create_client1():
+    client = Customer(name="First client")
+    client.save()
+    return client
+
+
+def create_client2():
+    client = Customer(name="Second client")
+    client.save()
+    return client

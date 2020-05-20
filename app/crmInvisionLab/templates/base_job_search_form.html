@@ -2,13 +2,13 @@
 <div class="search-form">
 <form action="/projects" method="get">{% csrf_token %}
     <div class="form-row">
-        <div class="form-group col-md-12">
+        <div class="form-group col-md-6">
             {{ project_search_form.name.label }}
             {{ project_search_form.name }}
         </div>
-        <div class="form-group col-md-12">
-            {{ project_search_form.ended.label }}
-            {{ project_search_form.ended }}
+        <div class="form-group col-md-6">
+            {{ project_search_form.collaborators.label }}
+            {{ project_search_form.collaborators }}
         </div>
     </div>
     <button class="btn btn-primary" type="submit" name="search">Search</button>
