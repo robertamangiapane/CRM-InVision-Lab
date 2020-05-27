@@ -106,3 +106,14 @@
 .client-menu .btn {
     margin-top: 0.5em;
 }
+
+.form-add {
+    padding: 1em;
+    background-color: #ededed;
+}
+
+.form-search {
+    padding: 1em;
+    margin-top: 1em;
+    background-color: #ededed;
+}
