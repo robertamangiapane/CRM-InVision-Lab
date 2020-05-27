@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Delete client{% endblock %}
+{% block content %}
+<form method="post">{% csrf_token %}
+    <p>
+        Are you sure you want to delete "{{ object.name }}"?
+        All data linked will be deleted from your database.
+    </p>
+    <button type="submit" class="btn btn-secondary">Confirm</button>
+</form>
+{% endblock %}

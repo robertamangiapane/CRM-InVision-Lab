@@ -20,7 +20,7 @@
                 <a class="client-name" href="/clients/view/{{ client.id }}">{{client.name}}</a>
             </td>
             <td>
-                {{contact.name}}
+                {{client.contact}}
             </td>
             <td>
                 {% for project in client.ongoing_projects.all.values %}

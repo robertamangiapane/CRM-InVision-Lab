@@ -28,7 +28,9 @@
                 {{project.name}}
             </td>
             <td>
-                {{collaborators}}
+                {% for collaborator in project.collaborators.all.values %}
+                    {{collaborator.name}};
+                {% endfor %}
             </td>
             <td>
                 {{project.preview}}

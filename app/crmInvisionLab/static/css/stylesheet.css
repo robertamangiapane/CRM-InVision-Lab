@@ -92,3 +92,17 @@
 .project-menu .btn {
     margin-top: 0.5em;
 }
+
+.client-menu {
+    float: right;
+}
+
+.client-details {
+    clear: both;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+
+.client-menu .btn {
+    margin-top: 0.5em;
+}

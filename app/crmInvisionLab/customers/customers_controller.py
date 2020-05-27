@@ -1,7 +1,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
-from .client_form import AddClientForm, SearchClientForm
+from .customer_form import AddClientForm, SearchClientForm
 from ..filtering_helpers import *
 
 
@@ -45,3 +45,20 @@ class ClientView(DetailView):
         context['client'] = self.object
         return context
 
+
+class ClientDelete(DeleteView):
+    model = Customer
+    success_url = '/clients'
+
+
+class ClientUpdate(UpdateView):
+    model = Customer
+    template_name_suffix = '_update_form'
+
+    def get_form(self, form_class=None):
+        return super().get_form(AddClientForm)
+
+    def form_valid(self, form):
+        self.object.save()
+        self.success_url = '/clients/view/' + str(self.object.id)
+        return super().form_valid(form)

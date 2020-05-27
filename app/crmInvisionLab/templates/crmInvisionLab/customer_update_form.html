@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Update a client{% endblock %}
+{% block content %}
+
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+    {{ message }}</div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% include "base_client_add_form.html" %}
+
+{% endblock %}

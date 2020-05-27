@@ -16,11 +16,11 @@ class AddClientForm(forms.ModelForm):
                   'ongoing_projects',
                   'old_projects']
 
-        labels = {'name': "Name",
-                  'email': "Email",
-                  'phone': "Phone",
-                  'position': 'Position',
-                  'contact': "Company contact person",
+        labels = {'name': "Client Name",
+                  'email': "Client Email",
+                  'phone': "Client Phone",
+                  'position': 'Client Position',
+                  'contact': "Contact person",
                   'contact_phone': "Contact phone",
                   'contact_email': "Contact email",
                   'ongoing_projects': "Ongoing projects",
