@@ -18,8 +18,11 @@ class FeatureTestClient(TestCase):
         self.assertIn("Second client", response_text)
 
     def test_user_can_add_new_client(self):
-        self.client_http.post('/clients/add/client',
+        response = self.client_http.post('/clients/add/client',
                                          {'name': 'First client'})
+
+        client = Customer.objects.get(name="First client")
+        self.assertRedirects(response, '/clients/view/' + str(client.id))
 
         response = self.client_http.get('/clients')
         response_text = response.content.decode("utf-8")

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Competitor details{% endblock %}
+{% block content %}
+
+<div class="competitor-menu">
+    <a href="/competitors/update/{{ competitor.id }}">
+        <button type="button" class="btn btn-secondary">Update a competitor</button>
+    </a>
+    <a href="/competitors/delete/{{ competitor.id }}">
+        <button type="button" class="btn btn-secondary">Delete a competitor</button>
+    </a>
+</div>
+
+<div class="competitor-details">
+    <table class="table table-sm">
+        <thead>
+        <tr>
+            <th scope="col">Client</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Position</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Contact phone</th>
+            <th scope="col">Contact email</th>
+            <th scope="col">Ongoing projects</th>
+            <th scope="col">Old projects</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                {{competitor.name}}
+            </td>
+            <td>
+                {{competitor.website}}
+            </td>
+            <td>
+                {{competitor.position}}
+            </td>
+            <td>
+                {{competitor.showreel}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

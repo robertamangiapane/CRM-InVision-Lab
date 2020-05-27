@@ -29,8 +29,8 @@ urlpatterns = [
     path('skills/update/<str:pk>', SkillUpdate.as_view(), name='skills_edit'),
     path('skills/delete/<str:pk>', SkillDelete.as_view(), name='skill_delete'),
     path('competitors', CompetitorList.as_view(), name='competitors'),
-    # path('competitors/add/competitor', CompetitorsAdd.as_view(), name='competitor_add'),
-    # path('competitors/view/<str:pk>', CompetitorsView.as_view(), name='competitor_view'),
-    # path('competitors/update/<str:pk>', CompetitorsUpdate.as_view(), name='competitor_edit'),
-    # path('competitors/delete/<str:pk>', CompetitorsDelete.as_view(), name='competitor_delete')
+    path('competitors/add/competitor', CompetitorAdd.as_view(), name='competitor_add'),
+    path('competitors/view/<str:pk>', CompetitorView.as_view(), name='competitor_view'),
+    path('competitors/update/<str:pk>', CompetitorUpdate.as_view(), name='competitor_edit'),
+    path('competitors/delete/<str:pk>', CompetitorDelete.as_view(), name='competitor_delete')
 ]

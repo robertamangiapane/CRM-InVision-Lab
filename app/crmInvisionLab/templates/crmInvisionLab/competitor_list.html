@@ -12,24 +12,17 @@
             <th scope="col">showreel</th>
         </tr>
         </thead>
-    {% for client in object_list %}
+    {% for competitor in object_list %}
         <tbody>
         <tr>
             <td>
-                <a class="client-name" href="/clients/view/{{ client.id }}">{{client.name}}</a>
+                <a class="competitor-name" href="/competitors/view/{{ competitor.id }}">{{competitor.name}}</a>
             </td>
             <td>
-                {{client.contact}}
+                {{competitor.website}}
             </td>
             <td>
-                {% for project in client.ongoing_projects.all.values %}
-                    <a class="project-name" href="/projects/view/{{ project.id }}">{{project.name}}</a>
-                {% endfor %}
-            </td>
-            <td>
-                {% for project in client.old_projects.all.values %}
-                    <a class="project-name" href="/projects/view/{{ project.id }}">{{project.name}}</a>
-                {% endfor %}
+                {{competitor.showreel}}
             </td>
         </tr>
         </tbody>

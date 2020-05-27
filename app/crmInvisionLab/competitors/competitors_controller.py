@@ -24,41 +24,41 @@ class CompetitorList(ListView):
         return context
 
 
-# class ClientAdd(CreateView):
-#     model = Customer
-#
-#     def get_form(self, form_class=None):
-#         return super().get_form(AddClientForm)
-#
-#     def form_valid(self, form):
-#         client = form.save()
-#         client.save()
-#         self.success_url = '/clients/view/' + str(client.id)
-#         return super().form_valid(form)
-#
-#
-# class ClientView(DetailView):
-#     model = Customer
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['client'] = self.object
-#         return context
-#
-#
-# class ClientDelete(DeleteView):
-#     model = Customer
-#     success_url = '/clients'
-#
-#
-# class ClientUpdate(UpdateView):
-#     model = Customer
-#     template_name_suffix = '_update_form'
-#
-#     def get_form(self, form_class=None):
-#         return super().get_form(AddClientForm)
-#
-#     def form_valid(self, form):
-#         self.object.save()
-#         self.success_url = '/clients/view/' + str(self.object.id)
-#         return super().form_valid(form)
+class CompetitorAdd(CreateView):
+    model = Competitor
+
+    def get_form(self, form_class=None):
+        return super().get_form(AddCompetitorForm)
+
+    def form_valid(self, form):
+        competitor = form.save()
+        competitor.save()
+        self.success_url = '/competitors/view/' + str(competitor.id)
+        return super().form_valid(form)
+
+
+class CompetitorView(DetailView):
+    model = Competitor
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['competitor'] = self.object
+        return context
+
+
+class CompetitorDelete(DeleteView):
+    model = Competitor
+    success_url = '/competitors'
+
+
+class CompetitorUpdate(UpdateView):
+    model = Competitor
+    template_name_suffix = '_update_form'
+
+    def get_form(self, form_class=None):
+        return super().get_form(AddCompetitorForm)
+
+    def form_valid(self, form):
+        self.object.save()
+        self.success_url = '/competitors/view/' + str(self.object.id)
+        return super().form_valid(form)

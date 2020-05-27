@@ -17,42 +17,45 @@ class FeatureTestCompetitor(TestCase):
         self.assertIn("First competitor", response_text)
         self.assertIn("Second competitor", response_text)
 
-    # def test_user_can_add_new_client(self):
-    #     self.client_http.post('/clients/add/client',
-    #                                      {'name': 'First client'})
-    #
-    #     response = self.client_http.get('/clients')
-    #     response_text = response.content.decode("utf-8")
-    #
-    #     self.assertIn("First client", response_text)
-    #
-    # def test_user_can_delete_client(self):
-    #     client = create_client1()
-    #     self.client_http.post('/clients/delete/' + str(client.id))
-    #
-    #     response = self.client_http.get('/clients')
-    #     response_text = response.content.decode("utf-8")
-    #
-    #     self.assertNotIn("First client", response_text)
-    #
-    # def test_user_can_update_a_client(self):
-    #     client = create_client1()
-    #
-    #     self.client_http.post('/clients/update/' + str(client.id),
-    #                           {'name': 'New name'})
-    #
-    #     response = self.client.get('/clients/view/' + str(client.id))
-    #     response_text = response.content.decode("utf-8")
-    #     self.assertIn("New name", response_text)
-    #
-    # def test_user_can_search_client_with_one_filter(self):
-    #     create_client1()
-    #     create_client2()
-    #     response = self.client_http.get('/clients', {
-    #         'name': "First client",
-    #         'search': "OK"})
-    #
-    #     response_text = response.content.decode("utf-8")
-    #
-    #     self.assertIn("First client", response_text)
-    #     self.assertNotIn("Second client", response_text)
+    def test_user_can_add_new_competitor(self):
+        response = self.client.post('/competitors/add/competitor',
+                                         {'name': 'First competitor'})
+
+        competitor = Competitor.objects.get(name="First competitor")
+        self.assertRedirects(response, '/competitors/view/' + str(competitor.id))
+
+        response = self.client.get('/competitors')
+        response_text = response.content.decode("utf-8")
+
+        self.assertIn("First competitor", response_text)
+
+    def test_user_can_delete_competitor(self):
+        competitor = create_competitor1()
+        self.client.post('/competitors/delete/' + str(competitor.id))
+
+        response = self.client.get('/competitors')
+        response_text = response.content.decode("utf-8")
+
+        self.assertNotIn("First competitor", response_text)
+
+    def test_user_can_update_a_competitor(self):
+        competitor = create_competitor1()
+
+        self.client.post('/competitors/update/' + str(competitor.id),
+                              {'name': 'New name'})
+
+        response = self.client.get('/competitors/view/' + str(competitor.id))
+        response_text = response.content.decode("utf-8")
+        self.assertIn("New name", response_text)
+
+    def test_user_can_search_competitor_with_one_filter(self):
+        create_competitor1()
+        create_competitor2()
+        response = self.client.get('/competitors', {
+            'name': "First competitor",
+            'search': "OK"})
+
+        response_text = response.content.decode("utf-8")
+
+        self.assertIn("First competitor", response_text)
+        self.assertNotIn("Second competitor", response_text)

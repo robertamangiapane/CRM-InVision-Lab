@@ -2,6 +2,7 @@
 {% block title %}My Projects{% endblock %}
 {% block content %}
 {% if include_form == "True" %}
+{% include "base_job_add_form.html" %}
 {% include "base_job_search_form.html" %}
 {% endif %}
 
