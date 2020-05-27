@@ -1,4 +1,4 @@
-from ..models import Collaborator, Skill, Job, Customer
+from ..models import Collaborator, Skill, Job, Customer, Competitor
 
 
 def create_collaborator1_skill1_for_test():
@@ -95,3 +95,15 @@ def create_client2():
     client = Customer(name="Second client")
     client.save()
     return client
+
+
+def create_competitor1():
+    competitor = Competitor(name="First competitor")
+    competitor.save()
+    return competitor
+
+
+def create_competitor2():
+    competitor = Competitor(name="Second competitor")
+    competitor.save()
+    return competitor

@@ -1,0 +1,53 @@
+<h5>Search a competitor:</h5>
+<div class="search-form">
+<form action="/competitors" method="get">{% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            {{ competitor_search_form.name.label }}
+            {{ competitor_search_form.name }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ competitor_search_form.email.label }}
+            {{ competitor_search_form.email }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ competitor_search_form.phone.label }}
+            {{ competitor_search_form.phone }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ competitor_search_form.position.label }}
+            {{ competitor_search_form.position }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ competitor_search_form.contact.label }}
+            {{ competitor_search_form.contact }}
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ competitor_search_form.contact_phone.label }}
+            {{ competitor_search_form.contact_phone }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ competitor_search_form.contact_email.label }}
+            {{ competitor_search_form.contact_email }}
+        </div>
+    </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ competitor_search_form.ongoing_projects.label }}
+            {{ competitor_search_form.ongoing_projects }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ competitor_search_form.old_projects.label }}
+            {{ competitor_search_form.old_projects }}
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit" name="search">Search</button>
+</form>
+</div>
+

@@ -48,3 +48,11 @@ class Customer(Model):
     contact_email = EmailField(max_length=200, blank=True)
     ongoing_projects = ManyToManyField(Job, related_name="ongoing_projects", blank=True)
     old_projects = ManyToManyField(Job, related_name="old_projects", blank=True)
+
+
+class Competitor(Model):
+    objects = Manager()
+    name = CharField(max_length=200)
+    website = URLField(max_length=200, blank=True)
+    position = CharField(max_length=200, blank=True)
+    showreel = URLField(max_length=200, blank=True)
