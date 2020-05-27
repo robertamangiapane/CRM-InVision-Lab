@@ -9,9 +9,9 @@
     <table class="table table-sm">
         <thead>
         <tr>
-            <th scope="col">Projects</th>
-            <th scope="col">Preview</th>
-            <th scope="col">Link</th>
+            <th scope="col">Project</th>
+            <th scope="col">Collaborators</th>
+            <th scope="col">Preview's Link</th>
             <th scope="col">Status</th>
 
         </tr>
@@ -23,10 +23,12 @@
                 <a class="project-name" href="/projects/view/{{ project.id }}">{{project.name}}</a>
             </td>
             <td>
-                {{project.preview}}
+                {% for collaborator in project.collaborators.all.values %}
+                    {{collaborator.name}};
+                {% endfor %}
             </td>
             <td>
-                {{project.link}}
+                {{project.preview}}
             </td>
             <td>
                 {% if project.ended %}

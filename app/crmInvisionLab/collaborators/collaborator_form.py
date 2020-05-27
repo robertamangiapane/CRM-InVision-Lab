@@ -15,14 +15,14 @@ class AddCollaboratorForm(forms.ModelForm):
                   'secondary_skills',
                   'showreel']
 
-        labels = {'name': "Name",
-                  'email': "Email",
-                  'phone': "Phone",
-                  'position': 'Position',
-                  'availability': "When is available",
-                  'main_skills': "Main skills",
-                  'secondary_skills': "Secondary skills",
-                  'showreel': "Showreel link"}
+        labels = {'name': "Collaborator name",
+                  'email': "Collaborator email",
+                  'phone': "Collaborator phone",
+                  'position': 'Collaborator position',
+                  'availability': "Collaborator availability",
+                  'main_skills': "Collaborator main skills",
+                  'secondary_skills': "Collaborator secondary skills",
+                  'showreel': "Collaborator showreel"}
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -38,34 +38,42 @@ class AddCollaboratorForm(forms.ModelForm):
 
 class SearchCollaboratorForm(forms.Form):
     name = forms.CharField(
+        label="Collaborator name",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(
+        label="Collaborator email",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     phone = PhoneNumberField(
+        label="Collaborator phone",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     position = forms.CharField(
+        label="Collaborator position",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     availability = forms.CharField(
+        label="Collaborator availability",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     main_skills = forms.ModelChoiceField(
+        label="Collaborator main skills",
         queryset=Skill.objects.order_by("name"),
         required=False,
         widget=forms.Select(attrs={'class': 'form-control'}))
     secondary_skills = forms.ModelChoiceField(
+        label="Collaborator secondary skills",
         queryset=Skill.objects.order_by("name"),
         required=False,
         widget=forms.Select(attrs={'class': 'form-control'}))
     showreel = forms.URLField(
+        label="Collaborator showreel",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))

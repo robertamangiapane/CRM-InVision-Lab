@@ -1,26 +1,28 @@
-<h5>Add a competitor to your database:</h5>
-<div class="search-form">
-    <form method="post">{% csrf_token %}
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                {{ form.name.label }}
-                {{ form.name }}
+<div class="form-add">
+    <h5>Add a new competitor:</h5>
+    <div class="search-form">
+        <form method="post">{% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.name.label }}
+                    {{ form.name }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.website.label }}
+                    {{ form.website }}
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                {{ form.website.label }}
-                {{ form.website }}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.position.label }}
+                    {{ form.position }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.showreel.label }}
+                    {{ form.showreel }}
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                {{ form.position.label }}
-                {{ form.position }}
-            </div>
-            <div class="form-group col-md-6">
-                {{ form.showreel.label }}
-                {{ form.showreel }}
-            </div>
-        </div>
-        <button class="btn btn-primary" type="submit" name="add">Add</button>
-    </form>
+            <button class="btn btn-primary" type="submit" name="add">Add</button>
+        </form>
+    </div>
 </div>

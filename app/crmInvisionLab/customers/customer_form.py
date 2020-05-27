@@ -16,13 +16,13 @@ class AddClientForm(forms.ModelForm):
                   'ongoing_projects',
                   'old_projects']
 
-        labels = {'name': "Client Name",
-                  'email': "Client Email",
-                  'phone': "Client Phone",
-                  'position': 'Client Position',
-                  'contact': "Contact person",
-                  'contact_phone': "Contact phone",
-                  'contact_email': "Contact email",
+        labels = {'name': "Client name",
+                  'email': "Client email",
+                  'phone': "Client phone",
+                  'position': 'Client position',
+                  'contact': "Contact person name",
+                  'contact_phone': "Contact person phone",
+                  'contact_email': "Contact person email",
                   'ongoing_projects': "Ongoing projects",
                   'old_projects': "Old projects"}
 
@@ -41,30 +41,37 @@ class AddClientForm(forms.ModelForm):
 
 class SearchClientForm(forms.Form):
     name = forms.CharField(
+        label="Client name",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     email = forms.EmailField(
+        label="Client email",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     phone = PhoneNumberField(
+        label="Client phone",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     position = forms.CharField(
+        label="Client position",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     contact = forms.CharField(
+        label="Contact person name",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     contact_phone = PhoneNumberField(
+        label="Contact person phone",
         max_length=200,
         required=False,
         widget=forms.Select(attrs={'class': 'form-control'}))
     contact_email = forms.EmailField(
+        label="Contact person email",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))

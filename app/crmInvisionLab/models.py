@@ -29,7 +29,6 @@ class Job(Model):
     objects = Manager()
     name = CharField(max_length=200)
     preview = URLField(max_length=200, blank=True)
-    link = URLField(max_length=200, blank=True)
     collaborators = ManyToManyField(Collaborator, related_name="collaborators", blank=True)
     ended = BooleanField(default=False)
 

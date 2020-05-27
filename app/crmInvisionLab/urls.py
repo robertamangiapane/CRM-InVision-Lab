@@ -9,7 +9,6 @@ from .competitors.competitors_controller import *
 urlpatterns = [
     path('', views.index, name='index'),
     path('projects', ProjectList.as_view(), name='projects'),
-    path('projects/ongoing', ProjectList.as_view(), name='projects_ongoing'),
     path('projects/old', ProjectList.as_view(), name='projects_old'),
     path('projects/add/project', ProjectAdd.as_view(), name='project_add'),
     path('projects/view/<str:pk>', ProjectView.as_view(), name='project_view'),

@@ -10,7 +10,7 @@ class AddCompetitorForm(forms.ModelForm):
                   'position',
                   'showreel']
 
-        labels = {'name': "Competitor Name",
+        labels = {'name': "Competitor name",
                   'website': "Competitor website",
                   'position': 'Competitor position',
                   'showreel': "Competitor last showreel"}
@@ -25,10 +25,12 @@ class AddCompetitorForm(forms.ModelForm):
 
 class SearchCompetitorForm(forms.Form):
     name = forms.CharField(
+        label="Competitor name",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
     website = forms.URLField(
+        label="Competitor name",
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -36,9 +38,6 @@ class SearchCompetitorForm(forms.Form):
         max_length=200,
         required=False,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
-    showreel = forms.URLField(
-        max_length=200,
-        required=False,
-        widget=forms.TextInput(attrs={'class': 'form-control'}))
+
 
 

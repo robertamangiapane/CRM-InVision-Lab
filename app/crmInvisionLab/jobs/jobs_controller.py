@@ -19,12 +19,10 @@ class ProjectList(ListView):
 
     def get_context_data(self, **kwargs):
         project_search_form = SearchJobForm(self.request.GET)
+        self.object_list = Job.objects.filter(ended=False)
 
         if self.request.path == '/projects/old':
             context = {'include_form': "False", 'projects': Job.objects.filter(ended=True)}
-
-        elif self.request.path == '/projects/ongoing':
-            context = {'include_form': "False", 'projects': Job.objects.filter(ended=False)}
 
         else:
             context = {'include_form': "True", 'project_search_form': project_search_form, 'projects': self.object_list}

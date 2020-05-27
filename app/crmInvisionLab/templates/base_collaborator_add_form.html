@@ -1,42 +1,44 @@
-<h5>Add a collaborator to your database:</h5>
-<div class="search-form">
-    <form method="post">{% csrf_token %}
-        <div class="form-row">
-            <div class="form-group col-md-12">
-                {{ form.name.label }}
-                {{ form.name }}
+<div class="form-add">
+    <h5>Add a new collaborator:</h5>
+    <div class="search-form">
+        <form method="post">{% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    {{ form.name.label }}
+                    {{ form.name }}
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                {{ form.email.label }}
-                {{ form.email }}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.email.label }}
+                    {{ form.email }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.phone.label }}
+                    {{ form.phone }}
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                {{ form.phone.label }}
-                {{ form.phone }}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.position.label }}
+                    {{ form.position }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.availability.label }}
+                    {{ form.availability }}
+                </div>
             </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                {{ form.position.label }}
-                {{ form.position }}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    {{ form.main_skills.label }}
+                    {{ form.main_skills }}
+                </div>
+                <div class="form-group col-md-6">
+                    {{ form.secondary_skills.label }}
+                    {{ form.secondary_skills }}
+                </div>
             </div>
-            <div class="form-group col-md-6">
-                {{ form.availability.label }}
-                {{ form.availability }}
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                {{ form.main_skills.label }}
-                {{ form.main_skills }}
-            </div>
-            <div class="form-group col-md-6">
-                {{ form.secondary_skills.label }}
-                {{ form.secondary_skills }}
-            </div>
-        </div>
-        <button class="btn btn-primary" type="submit" name="add">Add</button>
-    </form>
+            <button class="btn btn-primary" type="submit" name="add">Add</button>
+        </form>
+    </div>
 </div>
